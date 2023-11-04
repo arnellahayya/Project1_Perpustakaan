@@ -51,40 +51,40 @@ public class DataAnggota extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Bodoni MT", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("DATA ANGGOTA");
 
         jLabel3.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel3.setForeground(new java.awt.Color(0, 51, 102));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Id_Anggota");
 
         jLabel4.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel4.setForeground(new java.awt.Color(0, 51, 102));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Nama");
 
         jLabel5.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel5.setForeground(new java.awt.Color(0, 51, 102));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Jenis Kelamin");
 
         jLabel6.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel6.setForeground(new java.awt.Color(0, 51, 102));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("No. HP");
 
         jLabel7.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel7.setForeground(new java.awt.Color(0, 51, 102));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Email");
 
         jLabel8.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel8.setForeground(new java.awt.Color(0, 51, 102));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Jurusan");
 
@@ -125,9 +125,11 @@ public class DataAnggota extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 102));
         jButton1.setText("Tambah");
 
         jButton2.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 51, 102));
         jButton2.setText("Simpan");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +138,7 @@ public class DataAnggota extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 51, 102));
         jButton3.setText("Batal");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +147,7 @@ public class DataAnggota extends javax.swing.JFrame {
         });
 
         jButton4.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 51, 102));
         jButton4.setText("Koreksi");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,6 +156,7 @@ public class DataAnggota extends javax.swing.JFrame {
         });
 
         jButton5.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(0, 51, 102));
         jButton5.setText("Keluar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +165,7 @@ public class DataAnggota extends javax.swing.JFrame {
         });
 
         jButton6.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(0, 51, 102));
         jButton6.setText("Hapus");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +174,7 @@ public class DataAnggota extends javax.swing.JFrame {
         });
 
         jButton7.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(0, 51, 102));
         jButton7.setText("Tampil");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
