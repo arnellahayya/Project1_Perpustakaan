@@ -51,6 +51,7 @@ public class DataBuku extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 450));
+        setResizable(false);
 
         layoutDataBuku.setBackground(new java.awt.Color(153, 204, 255));
         layoutDataBuku.setMinimumSize(new java.awt.Dimension(0, 0));

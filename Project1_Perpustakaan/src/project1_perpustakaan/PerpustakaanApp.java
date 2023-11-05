@@ -4,6 +4,8 @@
  */
 package project1_perpustakaan;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Arnella
@@ -31,11 +33,11 @@ public class PerpustakaanApp extends javax.swing.JFrame {
         layoutLogin = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        login = new javax.swing.JButton();
-        username = new javax.swing.JTextField();
-        password = new javax.swing.JTextField();
+        loginButton = new javax.swing.JButton();
+        userTxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        passwordTxt = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 450));
@@ -55,25 +57,19 @@ public class PerpustakaanApp extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Password");
 
-        login.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        login.setForeground(new java.awt.Color(0, 51, 102));
-        login.setText("LOGIN");
-        login.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        login.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(0, 51, 102));
+        loginButton.setText("LOGIN");
+        loginButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
 
-        username.addActionListener(new java.awt.event.ActionListener() {
+        userTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
-            }
-        });
-
-        password.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
+                userTxtActionPerformed(evt);
             }
         });
 
@@ -96,16 +92,16 @@ public class PerpustakaanApp extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addGap(90, 90, 90)
-                        .addGroup(layoutLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layoutLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(userTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                            .addComponent(passwordTxt)))
                     .addComponent(jLabel2)
                     .addGroup(layoutLoginLayout.createSequentialGroup()
                         .addGap(336, 336, 336)
                         .addComponent(jLabel5))
                     .addGroup(layoutLoginLayout.createSequentialGroup()
                         .addGap(350, 350, 350)
-                        .addComponent(login)))
+                        .addComponent(loginButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layoutLoginLayout.setVerticalGroup(
@@ -117,13 +113,13 @@ public class PerpustakaanApp extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layoutLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(layoutLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
-                .addComponent(login)
+                .addComponent(loginButton)
                 .addContainerGap(126, Short.MAX_VALUE))
         );
 
@@ -141,17 +137,22 @@ public class PerpustakaanApp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_loginActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        String userName = "admin";
+        String password = "admin";
+        
+        if(userTxt.getText().equals(userName)&& passwordTxt.getText().equals(password)){
+            Menu mainMenu = new Menu();
+            mainMenu.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Username / Password Salah!", "Kesalahan", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
 
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+    private void userTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameActionPerformed
-
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
+    }//GEN-LAST:event_userTxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,8 +195,8 @@ public class PerpustakaanApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel layoutLogin;
-    private javax.swing.JButton login;
-    private javax.swing.JTextField password;
-    private javax.swing.JTextField username;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JPasswordField passwordTxt;
+    private javax.swing.JTextField userTxt;
     // End of variables declaration//GEN-END:variables
 }
