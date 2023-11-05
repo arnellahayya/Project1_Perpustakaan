@@ -134,21 +134,45 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void transaksiBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transaksiBukuActionPerformed
-        // TODO add your handling code here:
+        String TransaksiBuku = "TransaksiBuku"; 
+        switchToFrame(TransaksiBuku);
     }//GEN-LAST:event_transaksiBukuActionPerformed
 
     private void dataBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataBukuActionPerformed
-        // TODO add your handling code here:
+        String DataBuku = "DataBuku"; 
+        switchToFrame(DataBuku);
     }//GEN-LAST:event_dataBukuActionPerformed
 
     private void dataAnggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataAnggotaActionPerformed
-        // TODO add your handling code here:
+        String DataAnggota = "DataAnggota"; 
+        switchToFrame(DataAnggota);
     }//GEN-LAST:event_dataAnggotaActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        String PerpustakaanApp = "PerpustakaanApp"; 
+        switchToFrame(PerpustakaanApp);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
+   private void switchToFrame(String frameName) {
+    try {
+        if (frameName.equals("TransaksiBuku")) {
+            TransaksiBuku transaksiBukuFrame = new TransaksiBuku();
+            transaksiBukuFrame.setVisible(true);
+        } else if (frameName.equals("DataBuku")) {
+            DataBuku dataBukuFrame = new DataBuku();
+            dataBukuFrame.setVisible(true);
+        } else if (frameName.equals("DataAnggota")) {
+            DataAnggota dataAnggotaFrame = new DataAnggota();
+            dataAnggotaFrame.setVisible(true);
+        } else if (frameName.equals("PerpustakaanApp")) {
+            PerpustakaanApp perpustakaanAppFrame = new PerpustakaanApp();
+            perpustakaanAppFrame.setVisible(true);
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+}
+    
     /**
      * @param args the command line arguments
      */
@@ -192,4 +216,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton transaksiBuku;
     // End of variables declaration//GEN-END:variables
+
+    
 }

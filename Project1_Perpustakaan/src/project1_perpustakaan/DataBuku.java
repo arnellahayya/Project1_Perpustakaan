@@ -339,7 +339,8 @@ public class DataBuku extends javax.swing.JFrame {
     }//GEN-LAST:event_batalActionPerformed
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
-        // TODO add your handling code here:
+        String Menu = "Menu"; 
+        switchToFrame(Menu);
     }//GEN-LAST:event_keluarActionPerformed
 
     private void tampilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tampilActionPerformed
@@ -362,6 +363,18 @@ public class DataBuku extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tambahActionPerformed
 
+    private void switchToFrame(String frameName) {
+        try {
+            this.dispose(); 
+            if (frameName.equals("Menu")) { 
+                Menu menu = new Menu();
+                menu.setVisible(true);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
