@@ -41,7 +41,6 @@ public class PerpustakaanApp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 450));
-        setResizable(false);
 
         layoutLogin.setBackground(new java.awt.Color(153, 204, 255));
         layoutLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,7 +101,7 @@ public class PerpustakaanApp extends javax.swing.JFrame {
                     .addGroup(layoutLoginLayout.createSequentialGroup()
                         .addGap(350, 350, 350)
                         .addComponent(loginButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layoutLoginLayout.setVerticalGroup(
             layoutLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +126,7 @@ public class PerpustakaanApp extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(layoutLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
+            .addComponent(layoutLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

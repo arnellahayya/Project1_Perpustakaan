@@ -27,7 +27,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
     private void initComponents() {
 
         layoutTransaksi = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        anggota = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         NIM = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -36,7 +36,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
         jurusan = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         nomorHp = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        buku = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         kodeBuku = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -47,22 +47,22 @@ public class TransaksiBuku extends javax.swing.JFrame {
         penerbit = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         tahunTerbit = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        pencarian = new javax.swing.JTextField();
+        tambah = new javax.swing.JButton();
+        cari = new javax.swing.JButton();
         simpan = new javax.swing.JButton();
-        simpan1 = new javax.swing.JButton();
-        simpan2 = new javax.swing.JButton();
-        simpan3 = new javax.swing.JButton();
-        simpan4 = new javax.swing.JButton();
-        simpan5 = new javax.swing.JButton();
-        simpan6 = new javax.swing.JButton();
-        simpan7 = new javax.swing.JButton();
+        batal = new javax.swing.JButton();
+        perbarui = new javax.swing.JButton();
+        hapus = new javax.swing.JButton();
+        keluar = new javax.swing.JButton();
+        tampil = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        tanggalPinjam = new javax.swing.JTextField();
+        tanggalKembali = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
+        denda = new javax.swing.JTextField();
+        header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,8 +71,8 @@ public class TransaksiBuku extends javax.swing.JFrame {
         layoutTransaksi.setBackground(new java.awt.Color(153, 204, 255));
         layoutTransaksi.setPreferredSize(new java.awt.Dimension(800, 450));
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        anggota.setBackground(new java.awt.Color(153, 204, 255));
+        anggota.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel3.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 102));
@@ -118,47 +118,47 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout anggotaLayout = new javax.swing.GroupLayout(anggota);
+        anggota.setLayout(anggotaLayout);
+        anggotaLayout.setHorizontalGroup(
+            anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(anggotaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel6)
                     .addComponent(jLabel8))
                 .addGap(62, 62, 62)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NIM)
                     .addComponent(nama)
                     .addComponent(jurusan)
                     .addComponent(nomorHp))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        anggotaLayout.setVerticalGroup(
+            anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(anggotaLayout.createSequentialGroup()
+                .addGroup(anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NIM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jurusan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nomorHp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buku.setBackground(new java.awt.Color(153, 204, 255));
+        buku.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel5.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 102));
@@ -215,24 +215,24 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout bukuLayout = new javax.swing.GroupLayout(buku);
+        buku.setLayout(bukuLayout);
+        bukuLayout.setHorizontalGroup(
+            bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bukuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bukuLayout.createSequentialGroup()
+                        .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel10)
                             .addComponent(jLabel11)
                             .addComponent(jLabel5))
                         .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bukuLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(judulBuku)
                     .addComponent(namaPengarang)
                     .addComponent(penerbit)
@@ -240,88 +240,88 @@ public class TransaksiBuku extends javax.swing.JFrame {
                     .addComponent(tahunTerbit))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        bukuLayout.setVerticalGroup(
+            bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bukuLayout.createSequentialGroup()
+                .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(kodeBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(judulBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(namaPengarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(penerbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tahunTerbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
+        tambah.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        tambah.setForeground(new java.awt.Color(0, 51, 102));
+        tambah.setText("Tambah");
+        tambah.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        cari.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        cari.setForeground(new java.awt.Color(0, 51, 102));
+        cari.setText("Cari");
+        cari.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cariActionPerformed(evt);
+            }
+        });
+
         simpan.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
         simpan.setForeground(new java.awt.Color(0, 51, 102));
-        simpan.setText("Tambah");
+        simpan.setText("Simpan");
         simpan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        simpan1.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        simpan1.setForeground(new java.awt.Color(0, 51, 102));
-        simpan1.setText("Cari");
-        simpan1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        simpan1.addActionListener(new java.awt.event.ActionListener() {
+        batal.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        batal.setForeground(new java.awt.Color(0, 51, 102));
+        batal.setText("Batal");
+        batal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        perbarui.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        perbarui.setForeground(new java.awt.Color(0, 51, 102));
+        perbarui.setText("Perbarui");
+        perbarui.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        hapus.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        hapus.setForeground(new java.awt.Color(0, 51, 102));
+        hapus.setText("Hapus");
+        hapus.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpan1ActionPerformed(evt);
+                hapusActionPerformed(evt);
             }
         });
 
-        simpan2.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        simpan2.setForeground(new java.awt.Color(0, 51, 102));
-        simpan2.setText("Simpan");
-        simpan2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        simpan3.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        simpan3.setForeground(new java.awt.Color(0, 51, 102));
-        simpan3.setText("Batal");
-        simpan3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        simpan4.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        simpan4.setForeground(new java.awt.Color(0, 51, 102));
-        simpan4.setText("Perbarui");
-        simpan4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        simpan5.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        simpan5.setForeground(new java.awt.Color(0, 51, 102));
-        simpan5.setText("Hapus");
-        simpan5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        simpan5.addActionListener(new java.awt.event.ActionListener() {
+        keluar.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        keluar.setForeground(new java.awt.Color(0, 51, 102));
+        keluar.setText("keluar");
+        keluar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        keluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpan5ActionPerformed(evt);
+                keluarActionPerformed(evt);
             }
         });
 
-        simpan6.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        simpan6.setForeground(new java.awt.Color(0, 51, 102));
-        simpan6.setText("keluar");
-        simpan6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        simpan6.addActionListener(new java.awt.event.ActionListener() {
+        tampil.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        tampil.setForeground(new java.awt.Color(0, 51, 102));
+        tampil.setText("Tampil");
+        tampil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        tampil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpan6ActionPerformed(evt);
-            }
-        });
-
-        simpan7.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        simpan7.setForeground(new java.awt.Color(0, 51, 102));
-        simpan7.setText("Tampil");
-        simpan7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        simpan7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                simpan7ActionPerformed(evt);
+                tampilActionPerformed(evt);
             }
         });
 
@@ -347,46 +347,46 @@ public class TransaksiBuku extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(anggota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layoutTransaksiLayout.createSequentialGroup()
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layoutTransaksiLayout.createSequentialGroup()
+                                .addComponent(tambah)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(simpan)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(simpan2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(simpan3)
+                                .addComponent(batal)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextField1))
+                            .addComponent(pencarian))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(simpan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(simpan4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(cari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(perbarui, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layoutTransaksiLayout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField2))
+                        .addComponent(tanggalPinjam))
                     .addGroup(layoutTransaksiLayout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField3)))
+                        .addComponent(tanggalKembali)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(denda, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(248, 248, 248))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layoutTransaksiLayout.createSequentialGroup()
                                 .addGap(74, 74, 74)
-                                .addComponent(simpan5)
+                                .addComponent(hapus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(simpan6)
+                                .addComponent(keluar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(simpan7)))
+                                .addComponent(tampil)))
                         .addContainerGap())))
         );
         layoutTransaksiLayout.setVerticalGroup(
@@ -395,53 +395,53 @@ public class TransaksiBuku extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(simpan5)
-                            .addComponent(simpan6)
-                            .addComponent(simpan7)))
+                            .addComponent(hapus)
+                            .addComponent(keluar)
+                            .addComponent(tampil)))
                     .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(anggota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(simpan1))
+                            .addComponent(pencarian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cari))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tambah)
                             .addComponent(simpan)
-                            .addComponent(simpan2)
-                            .addComponent(simpan3)
-                            .addComponent(simpan4))))
+                            .addComponent(batal)
+                            .addComponent(perbarui))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layoutTransaksiLayout.createSequentialGroup()
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tanggalPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tanggalKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(denda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project1_perpustakaan/3.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(0, 0, 0))
@@ -451,13 +451,13 @@ public class TransaksiBuku extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(layoutTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(layoutTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -502,22 +502,34 @@ public class TransaksiBuku extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tahunTerbitActionPerformed
 
-    private void simpan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpan1ActionPerformed
+    private void cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_simpan1ActionPerformed
+    }//GEN-LAST:event_cariActionPerformed
 
-    private void simpan5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpan5ActionPerformed
+    private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_simpan5ActionPerformed
+    }//GEN-LAST:event_hapusActionPerformed
 
-    private void simpan6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpan6ActionPerformed
+    private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
+        String Menu = "Menu"; 
+        switchToFrame(Menu);
+    }//GEN-LAST:event_keluarActionPerformed
+
+    private void tampilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tampilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_simpan6ActionPerformed
+    }//GEN-LAST:event_tampilActionPerformed
 
-    private void simpan7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpan7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_simpan7ActionPerformed
-
+    private void switchToFrame(String frameName) {
+        try {
+            this.dispose(); 
+            if (frameName.equals("Menu")) { 
+                Menu menu = new Menu();
+                menu.setVisible(true);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -555,6 +567,13 @@ public class TransaksiBuku extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIM;
+    private javax.swing.JPanel anggota;
+    private javax.swing.JButton batal;
+    private javax.swing.JPanel buku;
+    private javax.swing.JButton cari;
+    private javax.swing.JTextField denda;
+    private javax.swing.JButton hapus;
+    private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -568,29 +587,22 @@ public class TransaksiBuku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField judulBuku;
     private javax.swing.JTextField jurusan;
+    private javax.swing.JButton keluar;
     private javax.swing.JTextField kodeBuku;
     private javax.swing.JPanel layoutTransaksi;
     private javax.swing.JTextField nama;
     private javax.swing.JTextField namaPengarang;
     private javax.swing.JTextField nomorHp;
+    private javax.swing.JTextField pencarian;
     private javax.swing.JTextField penerbit;
+    private javax.swing.JButton perbarui;
     private javax.swing.JButton simpan;
-    private javax.swing.JButton simpan1;
-    private javax.swing.JButton simpan2;
-    private javax.swing.JButton simpan3;
-    private javax.swing.JButton simpan4;
-    private javax.swing.JButton simpan5;
-    private javax.swing.JButton simpan6;
-    private javax.swing.JButton simpan7;
     private javax.swing.JTextField tahunTerbit;
+    private javax.swing.JButton tambah;
+    private javax.swing.JButton tampil;
+    private javax.swing.JTextField tanggalKembali;
+    private javax.swing.JTextField tanggalPinjam;
     // End of variables declaration//GEN-END:variables
 }
