@@ -98,7 +98,6 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="buku" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="74" pref="74" max="-2" attributes="0"/>
                                   <Component id="hapus" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="keluar" min="-2" max="-2" attributes="0"/>
@@ -548,7 +547,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="33" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="keluar"/>
+            <Property name="text" type="java.lang.String" value="Keluar"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>

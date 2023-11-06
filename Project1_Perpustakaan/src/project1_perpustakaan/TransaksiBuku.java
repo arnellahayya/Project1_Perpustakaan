@@ -307,7 +307,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
 
         keluar.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
         keluar.setForeground(new java.awt.Color(0, 51, 102));
-        keluar.setText("keluar");
+        keluar.setText("Keluar");
         keluar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         keluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,7 +381,6 @@ public class TransaksiBuku extends javax.swing.JFrame {
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(buku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                                .addGap(74, 74, 74)
                                 .addComponent(hapus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(keluar)
