@@ -9,10 +9,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import project1_perpustakaan.DatabaseKoneksi.DatabaseConnection;
 /**
  *
  * @author Musariul
+ * @author Arnella
  */
 public class DataAnggota extends javax.swing.JFrame {
 
@@ -32,6 +35,7 @@ public class DataAnggota extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pesanBerhasil = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -56,6 +60,17 @@ public class DataAnggota extends javax.swing.JFrame {
         tabelDatabase = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout pesanBerhasilLayout = new javax.swing.GroupLayout(pesanBerhasil.getContentPane());
+        pesanBerhasil.getContentPane().setLayout(pesanBerhasilLayout);
+        pesanBerhasilLayout.setHorizontalGroup(
+            pesanBerhasilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        pesanBerhasilLayout.setVerticalGroup(
+            pesanBerhasilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 800));
@@ -132,6 +147,11 @@ public class DataAnggota extends javax.swing.JFrame {
         tambah.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
         tambah.setForeground(new java.awt.Color(0, 51, 102));
         tambah.setText("Tambah");
+        tambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambahActionPerformed(evt);
+            }
+        });
 
         simpan.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
         simpan.setForeground(new java.awt.Color(0, 51, 102));
@@ -348,36 +368,7 @@ public class DataAnggota extends javax.swing.JFrame {
     }//GEN-LAST:event_jurusanActionPerformed
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
-         try {
-            // Getting a connection from your DatabaseConnection class
-            Connection koneksi = DatabaseConnection.getConnection();
-
-            // Creating a PreparedStatement to avoid SQL injection
-            String query = "INSERT INTO anggota (nim, nama, jenis_kelamin, no_hp, email, jurusan) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
-
-            // Setting values for the parameters
-            preparedStatement.setString(1, NIM.getText());
-            preparedStatement.setString(2, nama.getText());
-            preparedStatement.setString(3, jenisKelamin.getText());
-            preparedStatement.setString(4, nomorHp.getText());
-            preparedStatement.setString(5, email.getText());
-            preparedStatement.setString(6, jurusan.getText());
-
-            // Executing the query
-            preparedStatement.executeUpdate();
-
-            // You can add a success message or any other actions here
-
-            // Closing resources
-            preparedStatement.close();
-            koneksi.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DataAnggota.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    
+ 
     }//GEN-LAST:event_simpanActionPerformed
 
     private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
@@ -398,8 +389,54 @@ public class DataAnggota extends javax.swing.JFrame {
     }//GEN-LAST:event_hapusActionPerformed
 
     private void tampilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tampilActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_tampilActionPerformed
+
+    private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
+        try {
+            // Getting a connection from your DatabaseConnection class
+            Connection koneksi = DatabaseConnection.getConnection();
+
+            // Creating a PreparedStatement to avoid SQL injection
+            String query = "INSERT INTO data_anggota (nim, nama, jenis_kelamin, no_hp, email, jurusan) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+
+            // Setting values for the parameters
+            preparedStatement.setString(1, NIM.getText());
+            preparedStatement.setString(2, nama.getText());
+            preparedStatement.setString(3, jenisKelamin.getText());
+            preparedStatement.setString(4, nomorHp.getText());
+            preparedStatement.setString(5, email.getText());
+            preparedStatement.setString(6, jurusan.getText());
+
+            // Executing the query
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Display a success message using a JOptionPane
+                JOptionPane.showMessageDialog(this, "Data berhasil dimasukkan ke database", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                
+                NIM.setText("");
+                nama.setText("");
+                jenisKelamin.setText("");
+                nomorHp.setText("");
+                email.setText("");
+                jurusan.setText("");
+                // You can add additional actions for success here
+
+                // Closing resources
+                preparedStatement.close();
+                koneksi.close();
+            } else {
+                // Handle the case where no rows were affected (insertion failed)
+                JOptionPane.showMessageDialog(this, "Gagal memasukkan data ke database", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DataAnggota.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_tambahActionPerformed
 
     private void switchToFrame(String frameName) {
         try {
@@ -469,6 +506,7 @@ public class DataAnggota extends javax.swing.JFrame {
     private javax.swing.JTextField nama;
     private javax.swing.JTextField nomorHp;
     private javax.swing.JButton perbarui;
+    private javax.swing.JDialog pesanBerhasil;
     private javax.swing.JButton simpan;
     private javax.swing.JTable tabelDatabase;
     private javax.swing.JButton tambah;
