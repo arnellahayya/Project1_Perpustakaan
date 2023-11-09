@@ -4,6 +4,12 @@
  */
 package project1_perpustakaan;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import project1_perpustakaan.DatabaseKoneksi.DatabaseConnection;
 /**
  *
  * @author Musariul
@@ -47,7 +53,7 @@ public class DataAnggota extends javax.swing.JFrame {
         hapus = new javax.swing.JButton();
         tampil = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelDatabase = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -181,7 +187,7 @@ public class DataAnggota extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelDatabase.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -192,7 +198,7 @@ public class DataAnggota extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelDatabase);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -342,7 +348,36 @@ public class DataAnggota extends javax.swing.JFrame {
     }//GEN-LAST:event_jurusanActionPerformed
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
-        // TODO add your handling code here:
+         try {
+            // Getting a connection from your DatabaseConnection class
+            Connection koneksi = DatabaseConnection.getConnection();
+
+            // Creating a PreparedStatement to avoid SQL injection
+            String query = "INSERT INTO anggota (nim, nama, jenis_kelamin, no_hp, email, jurusan) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+
+            // Setting values for the parameters
+            preparedStatement.setString(1, NIM.getText());
+            preparedStatement.setString(2, nama.getText());
+            preparedStatement.setString(3, jenisKelamin.getText());
+            preparedStatement.setString(4, nomorHp.getText());
+            preparedStatement.setString(5, email.getText());
+            preparedStatement.setString(6, jurusan.getText());
+
+            // Executing the query
+            preparedStatement.executeUpdate();
+
+            // You can add a success message or any other actions here
+
+            // Closing resources
+            preparedStatement.close();
+            koneksi.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DataAnggota.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     }//GEN-LAST:event_simpanActionPerformed
 
     private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
@@ -428,7 +463,6 @@ public class DataAnggota extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jenisKelamin;
     private javax.swing.JTextField jurusan;
     private javax.swing.JButton keluar;
@@ -436,6 +470,7 @@ public class DataAnggota extends javax.swing.JFrame {
     private javax.swing.JTextField nomorHp;
     private javax.swing.JButton perbarui;
     private javax.swing.JButton simpan;
+    private javax.swing.JTable tabelDatabase;
     private javax.swing.JButton tambah;
     private javax.swing.JButton tampil;
     // End of variables declaration//GEN-END:variables
