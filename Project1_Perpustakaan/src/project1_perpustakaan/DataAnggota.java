@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import project1_perpustakaan.DatabaseKoneksi.DatabaseConnection;
+import java.sql.ResultSet;
 /**
  *
  * @author Musariul
@@ -391,7 +392,7 @@ public class DataAnggota extends javax.swing.JFrame {
     }//GEN-LAST:event_hapusActionPerformed
 
     private void tampilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tampilActionPerformed
-        
+        updateTable();
     }//GEN-LAST:event_tampilActionPerformed
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
@@ -418,6 +419,8 @@ public class DataAnggota extends javax.swing.JFrame {
                 // Display a success message using a JOptionPane
                 JOptionPane.showMessageDialog(this, "Data berhasil dimasukkan ke database", "Sukses", JOptionPane.INFORMATION_MESSAGE);
                 
+                updateTable();
+                 
                 NIM.setText("");
                 nama.setText("");
                 jenisKelamin.setText("");
@@ -451,6 +454,35 @@ public class DataAnggota extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
+    
+    private void updateTable() {
+        try {
+            Connection koneksi = DatabaseConnection.getConnection();
+            String query = "SELECT * FROM data_anggota";
+            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            DefaultTableModel model = (DefaultTableModel) tabelDatabase.getModel();
+            model.setRowCount(0); // Hapus data yang sudah ada di tabel
+
+            while (resultSet.next()) {
+                Object[] row = {
+                        resultSet.getString("nim"),
+                        resultSet.getString("nama"),
+                        resultSet.getString("jenis_kelamin"),
+                        resultSet.getString("no_hp"),
+                        resultSet.getString("email"),
+                        resultSet.getString("jurusan")
+                };
+                model.addRow(row);
+            }
+            preparedStatement.close();
+            koneksi.close();
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     
     /**
      * @param args the command line arguments
