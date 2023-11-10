@@ -209,13 +209,15 @@ public class DataAnggota extends javax.swing.JFrame {
 
         tabelDatabase.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "nim", "nama", "jenis_kelamin", "no_hp", "email", "jurusan"
             }
         ));
         jScrollPane1.setViewportView(tabelDatabase);
