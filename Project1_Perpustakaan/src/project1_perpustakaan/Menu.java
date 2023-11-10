@@ -148,12 +148,15 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_dataAnggotaActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        DatabaseKoneksi.DatabaseConnection.closeConnection(); 
+        
         String PerpustakaanApp = "PerpustakaanApp"; 
         switchToFrame(PerpustakaanApp);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
    private void switchToFrame(String frameName) {
     try {
+        this.dispose(); 
         if (frameName.equals("TransaksiBuku")) {
             TransaksiBuku transaksiBukuFrame = new TransaksiBuku();
             transaksiBukuFrame.setVisible(true);
@@ -170,7 +173,9 @@ public class Menu extends javax.swing.JFrame {
     } catch (Exception ex) {
         ex.printStackTrace();
     }
-}
+    }
+   
+    
     
     /**
      * @param args the command line arguments

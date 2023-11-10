@@ -26,5 +26,18 @@ public class DatabaseKoneksi {
             }
             return connection;
         }
+    
+        public static void closeConnection() {
+            try {
+                // Memeriksa apakah koneksi tidak null sebelum menutupnya
+                if (connection != null && !connection.isClosed()) {
+                    connection.close();
+                    System.out.println("Database connection closed.");  // Opsional: Cetak pesan ke konsol
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        
     }
 }

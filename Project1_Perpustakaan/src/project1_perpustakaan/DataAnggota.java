@@ -431,7 +431,6 @@ public class DataAnggota extends javax.swing.JFrame {
 
                 // Closing resources
                 preparedStatement.close();
-                koneksi.close();
             } else {
                 // Handle the case where no rows were affected (insertion failed)
                 JOptionPane.showMessageDialog(this, "Gagal memasukkan data ke database", "Error", JOptionPane.ERROR_MESSAGE);
@@ -477,7 +476,6 @@ public class DataAnggota extends javax.swing.JFrame {
                 model.addRow(row);
             }
             preparedStatement.close();
-            koneksi.close();
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
