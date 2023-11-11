@@ -4,6 +4,15 @@
  */
 package project1_perpustakaan;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Arnella
@@ -49,10 +58,9 @@ public class DataBuku extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         tahunTerbit = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelDatabaseBuku = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 800));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 70));
 
@@ -198,18 +206,20 @@ public class DataBuku extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelDatabaseBuku.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Kode Buku", "Judul Buku", "Nama Pengarang", "Penerbit", "Tahun Terbit", "Jumlah Halaman"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelDatabaseBuku);
 
         javax.swing.GroupLayout layoutDataBukuLayout = new javax.swing.GroupLayout(layoutDataBuku);
         layoutDataBuku.setLayout(layoutDataBukuLayout);
@@ -370,7 +380,7 @@ public class DataBuku extends javax.swing.JFrame {
     }//GEN-LAST:event_keluarActionPerformed
 
     private void tampilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tampilActionPerformed
-        // TODO add your handling code here:
+        updateTable();
     }//GEN-LAST:event_tampilActionPerformed
 
     private void perbaruiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perbaruiActionPerformed
@@ -386,7 +396,50 @@ public class DataBuku extends javax.swing.JFrame {
     }//GEN-LAST:event_simpanActionPerformed
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Getting a connection from your DatabaseConnection class
+            Connection koneksi = DatabaseKoneksi.DatabaseConnection.getConnection();
+
+            // Creating a PreparedStatement to avoid SQL injection
+            String query = "INSERT INTO data_buku (kode_buku, judul_buku, nama_pengarang, penerbit, tahun_terbit, jumlah_halaman) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+
+            // Setting values for the parameters
+            preparedStatement.setString(1, kodeBuku.getText());
+            preparedStatement.setString(2, judulBuku.getText());
+            preparedStatement.setString(3, namaPengarang.getText());
+            preparedStatement.setString(4, penerbit.getText());
+            preparedStatement.setString(5, tahunTerbit.getText());
+            preparedStatement.setString(6, jumlahHalaman.getText());
+
+            // Executing the query
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Display a success message using a JOptionPane
+                JOptionPane.showMessageDialog(this, "Data berhasil dimasukkan ke database", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                
+                updateTable();
+                 
+                kodeBuku.setText("");
+                judulBuku.setText("");
+                namaPengarang.setText("");
+                penerbit.setText("");
+                tahunTerbit.setText("");
+                jumlahHalaman.setText("");
+                // You can add additional actions for success here
+
+                // Closing resources
+                preparedStatement.close();
+            } else {
+                // Handle the case where no rows were affected (insertion failed)
+                JOptionPane.showMessageDialog(this, "Gagal memasukkan data ke database", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DataAnggota.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_tambahActionPerformed
 
     private void switchToFrame(String frameName) {
@@ -397,6 +450,33 @@ public class DataBuku extends javax.swing.JFrame {
                 menu.setVisible(true);
             }
         } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+     private void updateTable() {
+        try {
+            Connection koneksi = DatabaseKoneksi.DatabaseConnection.getConnection();
+            String query = "SELECT * FROM data_buku";
+            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            DefaultTableModel model = (DefaultTableModel) tabelDatabaseBuku.getModel();
+            model.setRowCount(0); // Hapus data yang sudah ada di tabel
+
+            while (resultSet.next()) {
+                Object[] row = {
+                        resultSet.getString("kode_buku"),
+                        resultSet.getString("judul_buku"),
+                        resultSet.getString("nama_pengarang"),
+                        resultSet.getString("penerbit"),
+                        resultSet.getString("tahun_terbit"),
+                        resultSet.getString("jumlah_halaman")
+                };
+                model.addRow(row);
+            }
+            preparedStatement.close();
+        } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
     }
@@ -448,7 +528,6 @@ public class DataBuku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField judulBuku;
     private javax.swing.JTextField jumlahHalaman;
     private javax.swing.JButton keluar;
@@ -458,6 +537,7 @@ public class DataBuku extends javax.swing.JFrame {
     private javax.swing.JTextField penerbit;
     private javax.swing.JButton perbarui;
     private javax.swing.JButton simpan;
+    private javax.swing.JTable tabelDatabaseBuku;
     private javax.swing.JTextField tahunTerbit;
     private javax.swing.JButton tambah;
     private javax.swing.JButton tampil;
