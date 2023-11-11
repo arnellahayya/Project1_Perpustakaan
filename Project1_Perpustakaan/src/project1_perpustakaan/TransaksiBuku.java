@@ -70,14 +70,14 @@ public class TransaksiBuku extends javax.swing.JFrame {
         tampil = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        tanggalPinjam = new javax.swing.JTextField();
-        tanggalKembali = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         denda = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         cariTextBuku = new javax.swing.JTextField();
         cariBuku = new javax.swing.JButton();
+        tanggalPinjam = new javax.swing.JFormattedTextField();
+        tanggalKembali = new javax.swing.JFormattedTextField();
         header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -400,6 +400,12 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
+        tanggalKembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tanggalKembaliActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layoutTransaksiLayout = new javax.swing.GroupLayout(layoutTransaksi);
         layoutTransaksi.setLayout(layoutTransaksiLayout);
         layoutTransaksiLayout.setHorizontalGroup(
@@ -416,7 +422,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
                                 .addComponent(simpan)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(batal)
-                                .addGap(0, 8, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(cariText))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -430,7 +436,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
                         .addComponent(jLabel13)
                         .addGap(18, 18, 18)
                         .addComponent(tanggalKembali)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 16, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
                         .addComponent(jLabel14)
@@ -631,9 +637,10 @@ public class TransaksiBuku extends javax.swing.JFrame {
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
         try {
         // Mengambil tanggal pinjam
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         Calendar calPinjam = Calendar.getInstance();
-        String tanggalPinjamStr = dateFormat.format(calPinjam.getTime());
+        String tanggalPinjamStr = tanggalPinjam.getText();
+        calPinjam.setTime(dateFormat.parse(tanggalPinjamStr));
 
         // Menghitung tanggal kembali berdasarkan maksimal peminjaman
         Calendar calKembali = (Calendar) calPinjam.clone();
@@ -722,6 +729,10 @@ public class TransaksiBuku extends javax.swing.JFrame {
             Logger.getLogger(DataAnggota.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cariBukuActionPerformed
+
+    private void tanggalKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tanggalKembaliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tanggalKembaliActionPerformed
 
     private int hitungDenda(Calendar tanggalKembali) {
         int denda = 0;
@@ -828,7 +839,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
     private javax.swing.JTextField tahunTerbit;
     private javax.swing.JButton tambah;
     private javax.swing.JButton tampil;
-    private javax.swing.JTextField tanggalKembali;
-    private javax.swing.JTextField tanggalPinjam;
+    private javax.swing.JFormattedTextField tanggalKembali;
+    private javax.swing.JFormattedTextField tanggalPinjam;
     // End of variables declaration//GEN-END:variables
 }
