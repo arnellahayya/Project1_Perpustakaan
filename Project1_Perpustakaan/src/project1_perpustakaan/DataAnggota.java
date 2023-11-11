@@ -218,7 +218,7 @@ public class DataAnggota extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "nim", "nama", "jenis_kelamin", "no_hp", "email", "jurusan"
+                "NIM", "Nama", "Jenis Kelamin", "No HP", "Email", "Jurusan"
             }
         ));
         jScrollPane1.setViewportView(tabelDatabase);
