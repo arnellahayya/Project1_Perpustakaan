@@ -148,7 +148,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_dataAnggotaActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        DatabaseKoneksi.DatabaseConnection.closeConnection(); 
+
         
         String PerpustakaanApp = "PerpustakaanApp"; 
         switchToFrame(PerpustakaanApp);

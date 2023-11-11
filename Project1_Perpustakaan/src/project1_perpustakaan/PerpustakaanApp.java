@@ -4,7 +4,12 @@
  */
 package project1_perpustakaan;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import project1_perpustakaan.DatabaseKoneksi.DatabaseConnection;
 
 /**
  *
@@ -146,6 +151,15 @@ public class PerpustakaanApp extends javax.swing.JFrame {
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Username / Password Salah!", "Kesalahan", JOptionPane.ERROR_MESSAGE);
+        }
+        try {
+            
+        // Membuat koneksi ke database
+            Connection koneksi = DatabaseConnection.getConnection();
+
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 

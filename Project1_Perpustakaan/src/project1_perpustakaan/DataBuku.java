@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import project1_perpustakaan.DatabaseKoneksi.DatabaseConnection;
 
 /**
  *
@@ -59,8 +60,12 @@ public class DataBuku extends javax.swing.JFrame {
         tahunTerbit = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelDatabaseBuku = new javax.swing.JTable();
+        cariText = new javax.swing.JTextField();
+        cari = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 800));
+        setResizable(false);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 70));
 
@@ -221,6 +226,22 @@ public class DataBuku extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabelDatabaseBuku);
 
+        cariText.setToolTipText("");
+        cariText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cariTextActionPerformed(evt);
+            }
+        });
+
+        cari.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        cari.setForeground(new java.awt.Color(0, 51, 102));
+        cari.setText("Cari ");
+        cari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cariActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layoutDataBukuLayout = new javax.swing.GroupLayout(layoutDataBuku);
         layoutDataBuku.setLayout(layoutDataBukuLayout);
         layoutDataBukuLayout.setHorizontalGroup(
@@ -238,26 +259,34 @@ public class DataBuku extends javax.swing.JFrame {
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(penerbit, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tahunTerbit, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jumlahHalaman, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kodeBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(namaPengarang, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(judulBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(simpan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tambah)))
-                .addGap(18, 18, 18)
-                .addComponent(perbarui)
-                .addGap(18, 18, 18)
-                .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(keluar)
-                    .addComponent(batal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tampil, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(90, 90, 90))
+                    .addGroup(layoutDataBukuLayout.createSequentialGroup()
+                        .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tahunTerbit, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jumlahHalaman, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(kodeBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(judulBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(simpan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tambah)
+                            .addComponent(batal, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(perbarui)
+                        .addGap(18, 18, 18)
+                        .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(hapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(keluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tampil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(90, 90, 90))
+                    .addGroup(layoutDataBukuLayout.createSequentialGroup()
+                        .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(penerbit, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(namaPengarang, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cariText)
+                            .addComponent(cari, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE))
+                        .addGap(91, 91, 91))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutDataBukuLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,13 +304,17 @@ public class DataBuku extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(simpan)
-                            .addComponent(batal))
+                            .addComponent(hapus))
                         .addGap(11, 11, 11)
                         .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tampil)
                             .addComponent(perbarui)
-                            .addComponent(hapus))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(batal))
+                        .addGap(18, 18, 18)
+                        .addComponent(cariText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 9, Short.MAX_VALUE)
+                        .addComponent(cari)
+                        .addGap(103, 103, 103))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutDataBukuLayout.createSequentialGroup()
                         .addContainerGap(19, Short.MAX_VALUE)
                         .addGroup(layoutDataBukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -371,7 +404,13 @@ public class DataBuku extends javax.swing.JFrame {
     }//GEN-LAST:event_namaPengarangActionPerformed
 
     private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
-        // TODO add your handling code here:
+        kodeBuku.setText("");
+        judulBuku.setText("");
+        namaPengarang.setText("");
+        penerbit.setText("");
+        tahunTerbit.setText("");
+        jumlahHalaman.setText("");
+        cariText.setText("");
     }//GEN-LAST:event_batalActionPerformed
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
@@ -384,15 +423,126 @@ public class DataBuku extends javax.swing.JFrame {
     }//GEN-LAST:event_tampilActionPerformed
 
     private void perbaruiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perbaruiActionPerformed
-        // TODO add your handling code here:
+        // Mendapatkan indeks baris yang dipilih
+        int selectedRow = tabelDatabaseBuku.getSelectedRow();
+
+        // Memastikan bahwa ada baris yang dipilih sebelum memperbarui
+        if (selectedRow != -1) {
+            try {
+                // Mendapatkan data dari baris yang dipilih
+                String kodeBukuToUpdate = tabelDatabaseBuku.getValueAt(selectedRow, 0).toString();
+                String judulBukuToUpdate = tabelDatabaseBuku.getValueAt(selectedRow, 1).toString();
+                String namaPengarangToUpdate = tabelDatabaseBuku.getValueAt(selectedRow, 2).toString();
+                String penerbitToUpdate = tabelDatabaseBuku.getValueAt(selectedRow, 3).toString();
+                String tahunTerbitToUpdate = tabelDatabaseBuku.getValueAt(selectedRow, 4).toString();
+                String jumlahHalamanToUpdate = tabelDatabaseBuku.getValueAt(selectedRow, 5).toString();
+
+                // Menampilkan data pada JTextField
+                kodeBuku.setText(kodeBukuToUpdate);
+                judulBuku.setText(judulBukuToUpdate);
+                namaPengarang.setText(namaPengarangToUpdate);
+                penerbit.setText(penerbitToUpdate);
+                tahunTerbit.setText(tahunTerbitToUpdate);
+                jumlahHalaman.setText(jumlahHalamanToUpdate);
+
+                // Menyimpan NIM yang akan diperbarui
+                // Anda bisa menyimpannya sebagai variabel instance jika diperlukan
+                // Contoh: this.nimToUpdate = nimToUpdate;
+
+                // Tambahkan logika lain yang diperlukan untuk proses perbarui
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            // Menampilkan pesan jika tidak ada baris yang dipilih
+            JOptionPane.showMessageDialog(this, "Pilih data yang ingin diperbarui", "Peringatan", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_perbaruiActionPerformed
 
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
-        // TODO add your handling code here:
+        // Mendapatkan indeks baris yang dipilih
+        int selectedRow = tabelDatabaseBuku.getSelectedRow();
+
+        // Memastikan bahwa ada baris yang dipilih sebelum menghapus
+        if (selectedRow != -1) {
+            try {
+                // Mendapatkan NIM dari baris yang dipilih
+                String kode_bukuToDelete = tabelDatabaseBuku.getValueAt(selectedRow, 0).toString();
+
+                // Menghapus data dari database
+                Connection koneksi = DatabaseConnection.getConnection();
+                String query = "DELETE FROM data_buku WHERE kode_buku = ?";
+                PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+                preparedStatement.setString(1, kode_bukuToDelete);
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    // Menampilkan pesan sukses dan mengupdate tabel
+                    JOptionPane.showMessageDialog(this, "Data berhasil dihapus dari database", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                    updateTable();
+                } else {
+                    // Menampilkan pesan kesalahan jika penghapusan gagal
+                    JOptionPane.showMessageDialog(this, "Gagal menghapus data dari database", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                // Menutup resources
+                preparedStatement.close();
+            } catch (SQLException | ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            // Menampilkan pesan jika tidak ada baris yang dipilih
+            JOptionPane.showMessageDialog(this, "Pilih data yang ingin dihapus", "Peringatan", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_hapusActionPerformed
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Mendapatkan koneksi dari kelas DatabaseConnection
+            Connection koneksi = DatabaseConnection.getConnection();
+
+            // Membuat PreparedStatement untuk menghindari SQL injection
+            String query = "UPDATE data_buku SET kode_buku=?, judul_buku=?, nama_pengarang=?, penerbit=?, tahun_terbit=?, jumlah_halaman=?";
+            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+
+            // Mengatur nilai untuk parameter-parameter
+            preparedStatement.setString(1, kodeBuku.getText());
+            preparedStatement.setString(2, judulBuku.getText());
+            preparedStatement.setString(3, namaPengarang.getText());
+            preparedStatement.setString(4, penerbit.getText());
+            preparedStatement.setString(5, tahunTerbit.getText());
+            preparedStatement.setString(6, jumlahHalaman.getText());
+
+            // Menjalankan query
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Menampilkan pesan sukses menggunakan JOptionPane
+                JOptionPane.showMessageDialog(this, "Data berhasil diperbarui di database", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+
+                // Menyegarkan tabel
+                updateTable();
+
+                // Mengosongkan JTextField setelah pembaruan berhasil
+                kodeBuku.setText("");
+                judulBuku.setText("");
+                namaPengarang.setText("");
+                penerbit.setText("");
+                tahunTerbit.setText("");
+                jumlahHalaman.setText("");
+                cariText.setText("");
+            } else {
+                // Menangani kasus jika tidak ada baris yang terpengaruh (pembaruan gagal)
+                JOptionPane.showMessageDialog(this, "Gagal memperbarui data di database", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            // Menutup sumber daya
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DataAnggota.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_simpanActionPerformed
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
@@ -441,6 +591,52 @@ public class DataBuku extends javax.swing.JFrame {
             Logger.getLogger(DataAnggota.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tambahActionPerformed
+
+    private void cariTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cariTextActionPerformed
+
+    private void cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariActionPerformed
+
+        try {
+            // Mendapatkan koneksi dari kelas DatabaseConnection
+            Connection koneksi = DatabaseConnection.getConnection();
+
+            // Membuat PreparedStatement untuk menghindari SQL injection
+            String query = "SELECT * FROM data_buku WHERE kode_buku=? OR judul_buku=?";
+            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+
+            // Mengatur nilai untuk parameter
+            preparedStatement.setString(1, cariText.getText());
+            preparedStatement.setString(2, cariText.getText());
+            
+            // Menjalankan query
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                // Menampilkan data yang ditemukan ke dalam JTextField
+                kodeBuku.setText(resultSet.getString("kode_buku"));
+                judulBuku.setText(resultSet.getString("judul_buku"));
+                namaPengarang.setText(resultSet.getString("nama_pengarang"));
+                penerbit.setText(resultSet.getString("penerbit"));
+                tahunTerbit.setText(resultSet.getString("tahun_terbit"));
+                jumlahHalaman.setText(resultSet.getString("jumlah_halaman"));
+
+                // Menampilkan pesan sukses menggunakan JOptionPane
+                JOptionPane.showMessageDialog(this, "Data ditemukan", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                // Menampilkan pesan jika data tidak ditemukan
+                JOptionPane.showMessageDialog(this, "Data tidak ditemukan", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            }
+
+            // Menutup sumber daya
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DataAnggota.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cariActionPerformed
 
     private void switchToFrame(String frameName) {
         try {
@@ -518,6 +714,8 @@ public class DataBuku extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton batal;
+    private javax.swing.JButton cari;
+    private javax.swing.JTextField cariText;
     private javax.swing.JButton hapus;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
