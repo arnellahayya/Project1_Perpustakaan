@@ -49,7 +49,7 @@ public class DataAnggota extends javax.swing.JFrame {
         nomorHp = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         jenisKelamin = new javax.swing.JTextField();
-        jurusan = new javax.swing.JTextField();
+        cariText = new javax.swing.JTextField();
         tambah = new javax.swing.JButton();
         simpan = new javax.swing.JButton();
         batal = new javax.swing.JButton();
@@ -59,8 +59,8 @@ public class DataAnggota extends javax.swing.JFrame {
         tampil = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelDatabase = new javax.swing.JTable();
-        jurusan1 = new javax.swing.JTextField();
-        perbarui1 = new javax.swing.JButton();
+        jurusan = new javax.swing.JTextField();
+        cari = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -141,9 +141,10 @@ public class DataAnggota extends javax.swing.JFrame {
             }
         });
 
-        jurusan.addActionListener(new java.awt.event.ActionListener() {
+        cariText.setToolTipText("");
+        cariText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jurusanActionPerformed(evt);
+                cariTextActionPerformed(evt);
             }
         });
 
@@ -225,18 +226,18 @@ public class DataAnggota extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabelDatabase);
 
-        jurusan1.addActionListener(new java.awt.event.ActionListener() {
+        jurusan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jurusan1ActionPerformed(evt);
+                jurusanActionPerformed(evt);
             }
         });
 
-        perbarui1.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        perbarui1.setForeground(new java.awt.Color(0, 51, 102));
-        perbarui1.setText("Cari ");
-        perbarui1.addActionListener(new java.awt.event.ActionListener() {
+        cari.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
+        cari.setForeground(new java.awt.Color(0, 51, 102));
+        cari.setText("Cari ");
+        cari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                perbarui1ActionPerformed(evt);
+                cariActionPerformed(evt);
             }
         });
 
@@ -265,7 +266,7 @@ public class DataAnggota extends javax.swing.JFrame {
                             .addComponent(jenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nomorHp, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jurusan1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jurusan, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -281,8 +282,8 @@ public class DataAnggota extends javax.swing.JFrame {
                                         .addComponent(keluar, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(hapus, javax.swing.GroupLayout.Alignment.TRAILING))
                                     .addComponent(tampil)))
-                            .addComponent(jurusan)
-                            .addComponent(perbarui1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cariText)
+                            .addComponent(cari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(68, 68, 68))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -311,16 +312,16 @@ public class DataAnggota extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nomorHp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jurusan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cariText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 2, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(perbarui1))
+                    .addComponent(cari))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jurusan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jurusan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -384,20 +385,104 @@ public class DataAnggota extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jenisKelaminActionPerformed
 
-    private void jurusanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jurusanActionPerformed
+    private void cariTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jurusanActionPerformed
+    }//GEN-LAST:event_cariTextActionPerformed
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
- 
+        try {
+            // Mendapatkan koneksi dari kelas DatabaseConnection
+            Connection koneksi = DatabaseConnection.getConnection();
+
+            // Membuat PreparedStatement untuk menghindari SQL injection
+            String query = "UPDATE data_anggota SET nama=?, jenis_kelamin=?, no_hp=?, email=?, jurusan=? WHERE nim=?";
+            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+
+            // Mengatur nilai untuk parameter-parameter
+            preparedStatement.setString(1, nama.getText());
+            preparedStatement.setString(2, jenisKelamin.getText());
+            preparedStatement.setString(3, nomorHp.getText());
+            preparedStatement.setString(4, email.getText());
+            preparedStatement.setString(5, jurusan.getText());
+            preparedStatement.setString(6, NIM.getText());
+
+            // Menjalankan query
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // Menampilkan pesan sukses menggunakan JOptionPane
+                JOptionPane.showMessageDialog(this, "Data berhasil diperbarui di database", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+
+                // Menyegarkan tabel
+                updateTable();
+
+                // Mengosongkan JTextField setelah pembaruan berhasil
+                NIM.setText("");
+                nama.setText("");
+                jenisKelamin.setText("");
+                nomorHp.setText("");
+                email.setText("");
+                jurusan.setText("");
+                cariText.setText("");
+            } else {
+                // Menangani kasus jika tidak ada baris yang terpengaruh (pembaruan gagal)
+                JOptionPane.showMessageDialog(this, "Gagal memperbarui data di database", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            // Menutup sumber daya
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DataAnggota.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_simpanActionPerformed
 
     private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
-        // TODO add your handling code here:
+        NIM.setText("");
+        nama.setText("");
+        jenisKelamin.setText("");
+        nomorHp.setText("");
+        email.setText("");
+        jurusan.setText("");
+        cariText.setText("");
     }//GEN-LAST:event_batalActionPerformed
 
     private void perbaruiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perbaruiActionPerformed
-        // TODO add your handling code here:
+        // Mendapatkan indeks baris yang dipilih
+    int selectedRow = tabelDatabase.getSelectedRow();
+
+    // Memastikan bahwa ada baris yang dipilih sebelum memperbarui
+    if (selectedRow != -1) {
+        try {
+            // Mendapatkan data dari baris yang dipilih
+            String nimToUpdate = tabelDatabase.getValueAt(selectedRow, 0).toString();
+            String namaToUpdate = tabelDatabase.getValueAt(selectedRow, 1).toString();
+            String jenisKelaminToUpdate = tabelDatabase.getValueAt(selectedRow, 2).toString();
+            String nomorHpToUpdate = tabelDatabase.getValueAt(selectedRow, 3).toString();
+            String emailToUpdate = tabelDatabase.getValueAt(selectedRow, 4).toString();
+            String jurusanToUpdate = tabelDatabase.getValueAt(selectedRow, 5).toString();
+
+            // Menampilkan data pada JTextField
+            NIM.setText(nimToUpdate);
+            nama.setText(namaToUpdate);
+            jenisKelamin.setText(jenisKelaminToUpdate);
+            nomorHp.setText(nomorHpToUpdate);
+            email.setText(emailToUpdate);
+            jurusan.setText(jurusanToUpdate);
+
+            // Menyimpan NIM yang akan diperbarui
+            // Anda bisa menyimpannya sebagai variabel instance jika diperlukan
+            // Contoh: this.nimToUpdate = nimToUpdate;
+
+            // Tambahkan logika lain yang diperlukan untuk proses perbarui
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    } else {
+        // Menampilkan pesan jika tidak ada baris yang dipilih
+        JOptionPane.showMessageDialog(this, "Pilih data yang ingin diperbarui", "Peringatan", JOptionPane.WARNING_MESSAGE);
+    }
     }//GEN-LAST:event_perbaruiActionPerformed
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
@@ -493,13 +578,51 @@ public class DataAnggota extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tambahActionPerformed
 
-    private void jurusan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jurusan1ActionPerformed
+    private void jurusanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jurusanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jurusan1ActionPerformed
+    }//GEN-LAST:event_jurusanActionPerformed
 
-    private void perbarui1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perbarui1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_perbarui1ActionPerformed
+    private void cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariActionPerformed
+                               
+        try {
+            // Mendapatkan koneksi dari kelas DatabaseConnection
+            Connection koneksi = DatabaseConnection.getConnection();
+
+            // Membuat PreparedStatement untuk menghindari SQL injection
+            String query = "SELECT * FROM data_anggota WHERE nim=?";
+            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+
+            // Mengatur nilai untuk parameter
+            preparedStatement.setString(1, cariText.getText());
+
+            // Menjalankan query
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                // Menampilkan data yang ditemukan ke dalam JTextField
+                NIM.setText(resultSet.getString("nim"));
+                nama.setText(resultSet.getString("nama"));
+                jenisKelamin.setText(resultSet.getString("jenis_kelamin"));
+                nomorHp.setText(resultSet.getString("no_hp"));
+                email.setText(resultSet.getString("email"));
+                jurusan.setText(resultSet.getString("jurusan"));
+
+                // Menampilkan pesan sukses menggunakan JOptionPane
+                JOptionPane.showMessageDialog(this, "Data ditemukan", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                // Menampilkan pesan jika data tidak ditemukan
+                JOptionPane.showMessageDialog(this, "Data tidak ditemukan", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            }
+
+            // Menutup sumber daya
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DataAnggota.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_cariActionPerformed
 
     private void switchToFrame(String frameName) {
         try {
@@ -579,6 +702,8 @@ public class DataAnggota extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NIM;
     private javax.swing.JButton batal;
+    private javax.swing.JButton cari;
+    private javax.swing.JTextField cariText;
     private javax.swing.JTextField email;
     private javax.swing.JButton hapus;
     private javax.swing.JLabel jLabel2;
@@ -593,12 +718,10 @@ public class DataAnggota extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jenisKelamin;
     private javax.swing.JTextField jurusan;
-    private javax.swing.JTextField jurusan1;
     private javax.swing.JButton keluar;
     private javax.swing.JTextField nama;
     private javax.swing.JTextField nomorHp;
     private javax.swing.JButton perbarui;
-    private javax.swing.JButton perbarui1;
     private javax.swing.JDialog pesanBerhasil;
     private javax.swing.JButton simpan;
     private javax.swing.JTable tabelDatabase;

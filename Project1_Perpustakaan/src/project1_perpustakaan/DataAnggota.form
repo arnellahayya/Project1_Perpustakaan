@@ -94,7 +94,7 @@
                               <Component id="jenisKelamin" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
                               <Component id="nomorHp" min="-2" pref="168" max="-2" attributes="0"/>
                               <Component id="email" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                              <Component id="jurusan1" min="-2" pref="168" max="-2" attributes="0"/>
+                              <Component id="jurusan" min="-2" pref="168" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -115,8 +115,8 @@
                                       <Component id="tampil" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jurusan" max="32767" attributes="0"/>
-                              <Component id="perbarui1" max="32767" attributes="0"/>
+                              <Component id="cariText" max="32767" attributes="0"/>
+                              <Component id="cari" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                       </Group>
@@ -153,18 +153,18 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="nomorHp" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jurusan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cariText" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="email" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="perbarui1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cari" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="8" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel8" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="jurusan1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jurusan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="371" max="-2" attributes="0"/>
@@ -271,9 +271,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jenisKelaminActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jurusan">
+        <Component class="javax.swing.JTextField" name="cariText">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jurusanActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cariTextActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="tambah">
@@ -424,12 +427,12 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="jurusan1">
+        <Component class="javax.swing.JTextField" name="jurusan">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jurusan1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jurusanActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="perbarui1">
+        <Component class="javax.swing.JButton" name="cari">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Bodoni MT" size="14" style="1"/>
@@ -440,7 +443,7 @@
             <Property name="text" type="java.lang.String" value="Cari "/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="perbarui1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cariActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
