@@ -11,9 +11,11 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.lang.model.util.Types;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import project1_perpustakaan.DatabaseKoneksi.DatabaseConnection;
@@ -380,19 +382,25 @@ public class TransaksiBuku extends javax.swing.JFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Denda  :");
 
+        denda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dendaActionPerformed(evt);
+            }
+        });
+
         tabelTransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "NIM", "Nama", "Jurusan", "No. HP", "Kode Buku", "Judul Buku", "Nama Pengaran", "Penerbit"
+                "NIM", "Nama", "Tanggal Pinjam", "Tanggal Kembali", "Denda"
             }
         ));
         jScrollPane1.setViewportView(tabelTransaksi);
@@ -648,21 +656,82 @@ public class TransaksiBuku extends javax.swing.JFrame {
 
     
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
-        String Nim = NIM.getText();
-        String KodeBuku = kodeBuku.getText();
-        String TanggalPinjam = tanggalPinjam.getText(); // Ubah sesuai dengan komponen yang sesuai
-        String TanggalKembali = tanggalKembali.getText(); // Ubah sesuai dengan komponen yang sesuai
-        int Denda = Integer.parseInt(denda.getText()); // Ubah sesuai dengan komponen yang sesuai
+        try {
+            // Mengambil tanggal pinjam
+            SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+            SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        // Periksa apakah data dengan NIM dan Kode Buku tersebut sudah ada
-        boolean dataExists = checkDataExists(Nim, KodeBuku);
+            // Mengambil tanggal kembali
+            String tanggalKembaliStr = tanggalKembali.getText();
+            String tanggalPinjamStr = tanggalPinjam.getText();
 
-        if (dataExists) {
-        // Data sudah ada, lakukan pembaruan
-        updateData(Nim, KodeBuku, TanggalPinjam, TanggalKembali, Denda);
-        } else {
-        // Data belum ada, lakukan penyimpanan
-        insertData(Nim, KodeBuku, TanggalPinjam, TanggalKembali, Denda);
+            try {
+                java.util.Date date = inputFormat.parse(tanggalPinjamStr);
+                tanggalPinjamStr = outputFormat.format(date);
+
+                if (!tanggalKembaliStr.isEmpty()) {
+                    date = inputFormat.parse(tanggalKembaliStr);
+                    tanggalKembaliStr = outputFormat.format(date);
+                }
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+                // Tambahkan penanganan kesalahan jika format tanggal tidak valid
+                JOptionPane.showMessageDialog(this, "Format tanggal tidak valid", "Error", JOptionPane.ERROR_MESSAGE);
+                return; // Hentikan eksekusi lebih lanjut jika format tanggal tidak valid
+            }
+
+            // Menghitung tanggal kembali berdasarkan maksimal peminjaman
+            Calendar calPinjam = Calendar.getInstance();
+            try {
+                calPinjam.setTime(outputFormat.parse(tanggalPinjamStr));
+            } catch (ParseException ex) {
+                Logger.getLogger(TransaksiBuku.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Calendar calKembali = (Calendar) calPinjam.clone();
+            calKembali.add(Calendar.DATE, MAX_PINJAM_HARI);
+
+            // Menghitung denda (jika melewati tanggal kembali)
+            int denda = hitungDenda(calKembali);
+
+            // Menyimpan data ke dalam database
+            Connection koneksi = DatabaseConnection.getConnection();
+            String updateQuery = "UPDATE transaksi_buku SET tanggal_pinjam=?, tanggal_kembali=?, denda=? WHERE nim=? AND kode_buku=?";
+            PreparedStatement updateStatement = koneksi.prepareStatement(updateQuery);
+
+            // Setel nilai untuk parameter pembaruan
+            updateStatement.setString(1, tanggalPinjamStr);
+            updateStatement.setString(2, tanggalKembaliStr);
+            updateStatement.setInt(3, denda);
+            updateStatement.setString(4, NIM.getText());
+            updateStatement.setString(5, kodeBuku.getText());
+
+            // Menjalankan kueri
+            int rowsUpdated = updateStatement.executeUpdate();
+
+            updateStatement.close();
+            // Periksa apakah pembaruan berhasil
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(this, "Data berhasil diperbarui di database", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                loadDataToTable();
+                updateTotalDenda(NIM.getText());
+
+                // Reset input fields
+                NIM.setText("");
+                nama.setText("");
+                nomorHp.setText("");
+                jurusan.setText("");
+                kodeBuku.setText("");
+                judulBuku.setText("");
+                namaPengarang.setText("");
+                penerbit.setText("");
+                tahunTerbit.setText("");
+                tanggalPinjam.setText("");
+                tanggalKembali.setText("");
+            } else {
+                JOptionPane.showMessageDialog(this, "Gagal memperbarui data di database", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_simpanActionPerformed
 
@@ -719,76 +788,80 @@ public class TransaksiBuku extends javax.swing.JFrame {
     }//GEN-LAST:event_tanggalKembaliActionPerformed
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
-         try {
-        // Mengambil tanggal pinjam
-        SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
-        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+           try {
+           // Mendapatkan tanggal pinjam
+           SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+           SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+           
 
-        String tanggalPinjamStr = tanggalPinjam.getText();
-        
-        try {
-            java.util.Date date = inputFormat.parse(tanggalPinjamStr);
-            tanggalPinjamStr = outputFormat.format(date);
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-            // Tambahkan penanganan kesalahan jika format tanggal tidak valid
-            JOptionPane.showMessageDialog(this, "Format tanggal tidak valid", "Error", JOptionPane.ERROR_MESSAGE);
-            return; // Hentikan eksekusi lebih lanjut jika format tanggal tidak valid
-        }
+           String tanggalPinjamStr = tanggalPinjam.getText();
 
-        // Menghitung tanggal kembali berdasarkan maksimal peminjaman
-        Calendar calPinjam = Calendar.getInstance();
-            try {
-                calPinjam.setTime(outputFormat.parse(tanggalPinjamStr)); // Menggunakan tanggalPinjam yang sudah di-parse
-            } catch (ParseException ex) {
-                Logger.getLogger(TransaksiBuku.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        Calendar calKembali = (Calendar) calPinjam.clone();
-        calKembali.add(Calendar.DATE, MAX_PINJAM_HARI);
-        String tanggalKembaliStr = outputFormat.format(calKembali.getTime());
+           try {
+               java.util.Date date = inputFormat.parse(tanggalPinjamStr);
+               tanggalPinjamStr = outputFormat.format(date);
+           } catch (ParseException ex) {
+               ex.printStackTrace();
+               // Tambahkan penanganan kesalahan jika format tanggal tidak valid
+               JOptionPane.showMessageDialog(this, "Format tanggal tidak valid", "Error", JOptionPane.ERROR_MESSAGE);
+               return; // Hentikan eksekusi lebih lanjut jika format tanggal tidak valid
+           }
 
-        // Menghitung denda (jika melewati tanggal kembali)
-        int denda = hitungDenda(calKembali);
+           // Menghitung tanggal kembali berdasarkan maksimal peminjaman
+           Calendar calPinjam = Calendar.getInstance();
+           try {
+               calPinjam.setTime(outputFormat.parse(tanggalPinjamStr)); // Menggunakan tanggalPinjam yang sudah di-parse
+           } catch (ParseException ex) {
+               Logger.getLogger(TransaksiBuku.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           Calendar calKembali = (Calendar) calPinjam.clone();
+           calKembali.add(Calendar.DATE, MAX_PINJAM_HARI);
+           String tanggalKembaliStr = outputFormat.format(calKembali.getTime());
 
-        // Menyimpan data ke dalam database
-        Connection koneksi = DatabaseConnection.getConnection();
-        String query = "INSERT INTO transaksi_buku (nim, kode_buku, tanggal_pinjam, tanggal_kembali, denda) VALUES (?, ?, ?, ?, ?)";
-        PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+           // Menghitung denda (jika melewati tanggal kembali)
+           int denda = hitungDenda(calKembali);
 
-        // Mengatur nilai untuk parameter
-        preparedStatement.setString(1, NIM.getText());
-        preparedStatement.setString(2, kodeBuku.getText());
-        preparedStatement.setString(3, tanggalPinjamStr);
-        preparedStatement.setString(4, tanggalKembaliStr);
-        preparedStatement.setInt(5, denda);
+           // Menyimpan data ke dalam database
+           Connection koneksi = DatabaseConnection.getConnection();
+           String query = "INSERT INTO transaksi_buku (nim, kode_buku, tanggal_pinjam, tanggal_kembali, denda) VALUES (?, ?, ?, ?, ?)";
+           PreparedStatement preparedStatement = koneksi.prepareStatement(query);
 
-        // Menjalankan query
-        int hasil = preparedStatement.executeUpdate();
+            // Mengatur nilai untuk parameter
+            preparedStatement.setString(1, NIM.getText());
+            preparedStatement.setString(2, kodeBuku.getText());
+            preparedStatement.setString(3, tanggalPinjamStr);
 
-        // Menampilkan pesan sukses atau gagal
-        if (hasil > 0) {
-            // Menampilkan pesan sukses menggunakan JOptionPane
-            JOptionPane.showMessageDialog(this, "Data disimpan\nDenda: " + denda, "Sukses", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            // Menampilkan pesan jika data tidak berhasil disimpan
-            JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        NIM.setText("");
-        nama.setText("");
-        nomorHp.setText("");
-        jurusan.setText("");
-        kodeBuku.setText("");
-        judulBuku.setText("");
-        namaPengarang.setText("");
-        penerbit.setText("");
-        tahunTerbit.setText("");
-        
-        // Menutup sumber daya
-        preparedStatement.close();
-        } catch (SQLException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
+            // Menyimpan tanggal_kembali sebagai null
+            preparedStatement.setDate(4, null);
+
+            // Menyimpan denda sebagai 0
+            preparedStatement.setInt(5, 0);
+           // Menjalankan query
+           int hasil = preparedStatement.executeUpdate();
+
+           // Menampilkan pesan sukses atau gagal
+           if (hasil > 0) {
+               // Menampilkan pesan sukses menggunakan JOptionPane
+               JOptionPane.showMessageDialog(this, "Data disimpan\nDenda: " + denda, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+           } else {
+               // Menampilkan pesan jika data tidak berhasil disimpan
+               JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", JOptionPane.ERROR_MESSAGE);
+           }
+
+           NIM.setText("");
+           nama.setText("");
+           nomorHp.setText("");
+           jurusan.setText("");
+           kodeBuku.setText("");
+           judulBuku.setText("");
+           namaPengarang.setText("");
+           penerbit.setText("");
+           tahunTerbit.setText("");
+
+           // Menutup sumber daya
+           preparedStatement.close();
+       } catch (SQLException | ClassNotFoundException ex) {
+           ex.printStackTrace();
+       }
     }//GEN-LAST:event_tambahActionPerformed
 
     private void perbaruiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perbaruiActionPerformed
@@ -797,16 +870,25 @@ public class TransaksiBuku extends javax.swing.JFrame {
         // Memastikan bahwa ada baris yang dipilih sebelum memperbarui
         if (selectedRow != -1) {
             try {
-                // Mendapatkan data dari baris yang dipilih
-                String nimToUpdate = tabelTransaksi.getValueAt(selectedRow, 0).toString();
-                String kodeBukuToUpdate = tabelTransaksi.getValueAt(selectedRow, 1).toString();
-                String tanggalPinjamToUpdate = tabelTransaksi.getValueAt(selectedRow, 2).toString();
-                String tanggalKembaliToUpdate = tabelTransaksi.getValueAt(selectedRow, 3).toString();
-                String dendaToUpdate = tabelTransaksi.getValueAt(selectedRow, 4).toString();
+               // Mendapatkan data dari baris yang dipilih
+                Object nimObject = tabelTransaksi.getValueAt(selectedRow, 0);
+                Object kodeBukuObject = tabelTransaksi.getValueAt(selectedRow, 1);
+                Object tanggalPinjamObject = tabelTransaksi.getValueAt(selectedRow, 2);
+                Object tanggalKembaliObject = tabelTransaksi.getValueAt(selectedRow, 3);
+                Object dendaObject = tabelTransaksi.getValueAt(selectedRow, 4);
+
+                // Check for null values before invoking toString()
+                String nimToUpdate = nimObject != null ? nimObject.toString() : "";
+                String kodeBukuToUpdate = kodeBukuObject != null ? kodeBukuObject.toString() : "";
+                String tanggalPinjamToUpdate = tanggalPinjamObject != null ? tanggalPinjamObject.toString() : "";
+                String tanggalKembaliToUpdate = tanggalKembaliObject != null ? tanggalKembaliObject.toString() : "";
+                String dendaToUpdate = dendaObject != null ? dendaObject.toString() : "";
 
                 // Menampilkan data pada JTextField
                 cariText.setText(nimToUpdate);
                 cariTextBuku.setText(kodeBukuToUpdate);
+
+                // Handle null values for tanggalPinjam, tanggalKembali, and denda
                 tanggalPinjam.setText(tanggalPinjamToUpdate);
                 tanggalKembali.setText(tanggalKembaliToUpdate);
                 denda.setText(dendaToUpdate);
@@ -825,6 +907,10 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_perbaruiActionPerformed
 
+    private void dendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dendaActionPerformed
+
     private int hitungDenda(Calendar tanggalKembali) {
         int denda = 0;
         Calendar calSekarang = Calendar.getInstance();
@@ -837,10 +923,40 @@ public class TransaksiBuku extends javax.swing.JFrame {
 
         return denda;
     }
-    
     private long daysBetween(Calendar startDate, Calendar endDate) {
         long diffMillis = endDate.getTimeInMillis() - startDate.getTimeInMillis();
         return diffMillis / (24 * 60 * 60 * 1000);
+    }
+    
+    private void updateTotalDenda(String nim) {
+        try {
+            Connection koneksi = DatabaseConnection.getConnection();
+            String query = "SELECT SUM(denda) AS total FROM transaksi_buku WHERE nim=?";
+            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+
+            preparedStatement.setString(1, nim);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int totalDenda = resultSet.getInt("total");
+
+                // Perbarui total denda dalam data pengguna
+                String updateQuery = "UPDATE transaksi_buku SET denda=? WHERE nim=?";
+                PreparedStatement updateStatement = koneksi.prepareStatement(updateQuery);
+
+                updateStatement.setInt(1, totalDenda);
+                updateStatement.setString(2, nim);
+
+                updateStatement.executeUpdate();
+                updateStatement.close();
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
     
     private void switchToFrame(String frameName) {
@@ -855,114 +971,48 @@ public class TransaksiBuku extends javax.swing.JFrame {
         }
     }
     
-    private void updateData(String nim, String kodeBuku, String tanggalPinjam, String tanggalKembali, int denda) {
-        try {
-            Connection koneksi = DatabaseConnection.getConnection();
-            String query = "UPDATE transaksi_buku SET tanggal_pinjam=?, tanggal_kembali=?, denda=? WHERE nim=? AND kode_buku=?";
-            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
-
-            preparedStatement.setString(1, tanggalPinjam);
-            preparedStatement.setString(2, tanggalKembali);
-            preparedStatement.setInt(3, denda);
-            preparedStatement.setString(4, nim);
-            preparedStatement.setString(5, kodeBuku);
-
-            int hasil = preparedStatement.executeUpdate();
-
-            if (hasil > 0) {
-                JOptionPane.showMessageDialog(this, "Data berhasil diperbarui", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Gagal memperbarui data", "Gagal", JOptionPane.ERROR_MESSAGE);
-            }
-
-            preparedStatement.close();
-            
-        } catch (SQLException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    private boolean checkDataExists(String nim, String kodeBuku) {
-        try {
-            Connection koneksi = DatabaseConnection.getConnection();
-            String query = "SELECT * FROM transaksi_buku WHERE nim=? AND kode_buku=?";
-            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
-
-            preparedStatement.setString(1, nim);
-            preparedStatement.setString(2, kodeBuku);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            boolean exists = resultSet.next();
-
-            preparedStatement.close();
-          
-
-            return exists;
-        } catch (SQLException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-            return false;
-        }
-    }
-    
-    private void insertData(String nim, String kodeBuku, String tanggalPinjam, String tanggalKembali, int denda) {
-        try {
-            Connection koneksi = DatabaseConnection.getConnection();
-            String query = "INSERT INTO transaksi_buku (nim, kode_buku, tanggal_pinjam, tanggal_kembali, denda) VALUES (?, ?, ?, ?, ?)";
-            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
-
-            preparedStatement.setString(1, nim);
-            preparedStatement.setString(2, kodeBuku);
-            preparedStatement.setString(3, tanggalPinjam);
-            preparedStatement.setString(4, tanggalKembali);
-            preparedStatement.setInt(5, denda);
-
-            int hasil = preparedStatement.executeUpdate();
-
-            if (hasil > 0) {
-                JOptionPane.showMessageDialog(this, "Data disimpan\nDenda: " + denda, "Sukses", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", JOptionPane.ERROR_MESSAGE);
-            }
-
-            preparedStatement.close();
-            
-        } catch (SQLException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-    }
-    
     private void loadDataToTable() {
-        try {
-            Connection koneksi = DatabaseConnection.getConnection();
-            String query = "SELECT * FROM transaksi_buku";
-            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
-            ResultSet resultSet = preparedStatement.executeQuery();
+       try {
+        Connection koneksi = DatabaseConnection.getConnection();
+        String query = "SELECT * FROM transaksi_buku";
+        PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+        ResultSet resultSet = preparedStatement.executeQuery();
 
-            // Mendapatkan model tabel yang sudah ada atau membuat model baru
-            DefaultTableModel tableModel = (DefaultTableModel) tabelTransaksi.getModel();
+        // Mendapatkan model tabel yang sudah ada atau membuat model baru
+        DefaultTableModel tableModel = (DefaultTableModel) tabelTransaksi.getModel();
 
-            // Menghapus semua baris yang sudah ada pada model tabel
-            tableModel.setRowCount(0);
+        // Menghapus semua baris yang sudah ada pada model tabel
+        tableModel.setRowCount(0);
 
-            while (resultSet.next()) {
-                // Membuat vektor untuk menyimpan data baris
-                Vector<Object> row = new Vector<>();
-                row.add(resultSet.getString("nim"));
-                row.add(resultSet.getString("kode_buku"));
-                row.add(resultSet.getString("tanggal_pinjam"));
-                row.add(resultSet.getString("tanggal_kembali"));
-                row.add(resultSet.getInt("denda"));
+        while (resultSet.next()) {
+            // Membuat vektor untuk menyimpan data baris
+            Vector<Object> row = new Vector<>();
+            row.add(resultSet.getString("nim"));
+            row.add(resultSet.getString("kode_buku"));
 
-                // Menambahkan vektor ke dalam model tabel
-                tableModel.addRow(row);
-            }
+            // Format tanggal_pinjam dan tanggal_kembali
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-            // Menutup sumber daya
-            resultSet.close();
-            preparedStatement.close();
-        } catch (SQLException | ClassNotFoundException ex) {
-            ex.printStackTrace();
+            // Check if the date fields are null before formatting
+            Date tanggalPinjam = resultSet.getDate("tanggal_pinjam");
+            Date tanggalKembali = resultSet.getDate("tanggal_kembali");
+
+            row.add(tanggalPinjam != null ? outputFormat.format(tanggalPinjam) : null);  // Format tanggal_pinjam
+            row.add(tanggalKembali != null ? outputFormat.format(tanggalKembali) : null); // Format tanggal_kembali
+
+            row.add(resultSet.getInt("denda"));
+
+            // Menambahkan vektor ke dalam model tabel
+            tableModel.addRow(row);
         }
+
+        // Menutup sumber daya
+        resultSet.close();
+        preparedStatement.close();
+    } catch (SQLException | ClassNotFoundException ex) {
+        ex.printStackTrace();
+    }
     }
     
     /**

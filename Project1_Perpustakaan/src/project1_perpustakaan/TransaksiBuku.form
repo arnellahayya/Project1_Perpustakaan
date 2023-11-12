@@ -630,6 +630,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="denda">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dendaActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -641,15 +644,12 @@
             <Component class="javax.swing.JTable" name="tabelTransaksi">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="8" rowCount="8">
+                  <Table columnCount="5" rowCount="8">
                     <Column editable="true" title="NIM" type="java.lang.Object"/>
                     <Column editable="true" title="Nama" type="java.lang.Object"/>
-                    <Column editable="true" title="Jurusan" type="java.lang.Object"/>
-                    <Column editable="true" title="No. HP" type="java.lang.Object"/>
-                    <Column editable="true" title="Kode Buku" type="java.lang.Object"/>
-                    <Column editable="true" title="Judul Buku" type="java.lang.Object"/>
-                    <Column editable="true" title="Nama Pengaran" type="java.lang.Object"/>
-                    <Column editable="true" title="Penerbit" type="java.lang.Object"/>
+                    <Column editable="true" title="Tanggal Pinjam" type="java.lang.Object"/>
+                    <Column editable="true" title="Tanggal Kembali" type="java.lang.Object"/>
+                    <Column editable="true" title="Denda" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>

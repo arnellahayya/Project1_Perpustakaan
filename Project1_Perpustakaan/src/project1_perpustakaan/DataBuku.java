@@ -502,16 +502,16 @@ public class DataBuku extends javax.swing.JFrame {
             Connection koneksi = DatabaseConnection.getConnection();
 
             // Membuat PreparedStatement untuk menghindari SQL injection
-            String query = "UPDATE data_buku SET kode_buku=?, judul_buku=?, nama_pengarang=?, penerbit=?, tahun_terbit=?, jumlah_halaman=?";
+            String query = "UPDATE data_buku SET judul_buku=?, nama_pengarang=?, penerbit=?, tahun_terbit=?, jumlah_halaman=? WHERE kode_buku=?";
             PreparedStatement preparedStatement = koneksi.prepareStatement(query);
 
             // Mengatur nilai untuk parameter-parameter
-            preparedStatement.setString(1, kodeBuku.getText());
-            preparedStatement.setString(2, judulBuku.getText());
-            preparedStatement.setString(3, namaPengarang.getText());
-            preparedStatement.setString(4, penerbit.getText());
-            preparedStatement.setString(5, tahunTerbit.getText());
-            preparedStatement.setString(6, jumlahHalaman.getText());
+            preparedStatement.setString(1, judulBuku.getText());
+            preparedStatement.setString(2, namaPengarang.getText());
+            preparedStatement.setString(3, penerbit.getText());
+            preparedStatement.setString(4, tahunTerbit.getText());
+            preparedStatement.setString(5, jumlahHalaman.getText());
+            preparedStatement.setString(6, kodeBuku.getText()); 
 
             // Menjalankan query
             int rowsAffected = preparedStatement.executeUpdate();
