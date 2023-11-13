@@ -4,22 +4,21 @@
  */
 package project1_perpustakaan;
 
+import project1_perpustakaan.DatabaseKoneksi.DatabaseConnection;
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.lang.model.util.Types;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import project1_perpustakaan.DatabaseKoneksi.DatabaseConnection;
-
 
 /**
  *
@@ -75,19 +74,18 @@ public class TransaksiBuku extends javax.swing.JFrame {
         tampil = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        denda = new javax.swing.JTextField();
+        dendaText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelTransaksi = new javax.swing.JTable();
         cariTextBuku = new javax.swing.JTextField();
         cariBuku = new javax.swing.JButton();
         tanggalPinjam = new javax.swing.JFormattedTextField();
         tanggalKembali = new javax.swing.JFormattedTextField();
+        jLabel15 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         layoutTransaksi.setBackground(new java.awt.Color(153, 204, 255));
         layoutTransaksi.setPreferredSize(new java.awt.Dimension(800, 450));
@@ -253,11 +251,11 @@ public class TransaksiBuku extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bukuLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(judulBuku)
-                    .addComponent(namaPengarang)
-                    .addComponent(penerbit)
-                    .addComponent(kodeBuku, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(penerbit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(namaPengarang, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(judulBuku, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(kodeBuku, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tahunTerbit))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -375,16 +373,11 @@ public class TransaksiBuku extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 51, 102));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("Tanggal Kembali  :");
+        jLabel13.setText("Denda                      :");
 
-        jLabel14.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Denda  :");
-
-        denda.addActionListener(new java.awt.event.ActionListener() {
+        dendaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dendaActionPerformed(evt);
+                dendaTextActionPerformed(evt);
             }
         });
 
@@ -397,10 +390,22 @@ public class TransaksiBuku extends javax.swing.JFrame {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null}
             },
             new String [] {
-                "NIM", "Nama", "Tanggal Pinjam", "Tanggal Kembali", "Denda"
+                "NIM", "Kode Buku", "Tanggal Pinjam", "Tanggal Kembali", "Denda"
             }
         ));
         jScrollPane1.setViewportView(tabelTransaksi);
@@ -421,67 +426,80 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
+        tanggalPinjam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tanggalPinjamActionPerformed(evt);
+            }
+        });
+
         tanggalKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tanggalKembaliActionPerformed(evt);
             }
         });
 
+        jLabel15.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setText("Tanggal Kembali  :");
+
         javax.swing.GroupLayout layoutTransaksiLayout = new javax.swing.GroupLayout(layoutTransaksi);
         layoutTransaksi.setLayout(layoutTransaksiLayout);
         layoutTransaksiLayout.setHorizontalGroup(
             layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(layoutTransaksiLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(anggota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layoutTransaksiLayout.createSequentialGroup()
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(anggota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layoutTransaksiLayout.createSequentialGroup()
+                                .addComponent(cariText)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dendaText, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13)))
+                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layoutTransaksiLayout.createSequentialGroup()
+                                .addGap(148, 148, 148)
+                                .addComponent(cariTextBuku)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cariBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
+                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layoutTransaksiLayout.createSequentialGroup()
+                                .addGap(19, 19, 19)
                                 .addComponent(tambah)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(perbarui)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(simpan)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(batal)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(cariText))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(perbarui, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(18, 18, 18)
-                        .addComponent(tanggalPinjam))
-                    .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(tanggalKembali)))
-                .addGap(24, 24, 24)
-                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(denda, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(248, 248, 248))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
-                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                                .addComponent(cariTextBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cariBuku, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(hapus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(keluar)
+                                .addComponent(tampil)
+                                .addGap(184, 184, 184)
+                                .addComponent(keluar))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layoutTransaksiLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tanggalPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tampil)))
-                        .addContainerGap())))
-            .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tanggalKembali)
+                                .addGap(3, 3, 3)))
+                        .addGap(21, 21, 21))))
         );
         layoutTransaksiLayout.setVerticalGroup(
             layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -492,39 +510,38 @@ public class TransaksiBuku extends javax.swing.JFrame {
                         .addComponent(buku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(hapus)
-                            .addComponent(keluar)
-                            .addComponent(tampil)
                             .addComponent(cariTextBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cariBuku)))
                     .addGroup(layoutTransaksiLayout.createSequentialGroup()
                         .addComponent(anggota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cariText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cari))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tambah)
-                            .addComponent(simpan)
-                            .addComponent(batal)
-                            .addComponent(perbarui))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tanggalPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cari)
+                            .addComponent(cariText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tanggalKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(dendaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tanggalPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tanggalKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(denda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(simpan)
+                        .addComponent(batal)
+                        .addComponent(hapus)
+                        .addComponent(keluar)
+                        .addComponent(tampil))
+                    .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tambah)
+                        .addComponent(perbarui)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project1_perpustakaan/3.png"))); // NOI18N
@@ -639,7 +656,67 @@ public class TransaksiBuku extends javax.swing.JFrame {
     }//GEN-LAST:event_cariActionPerformed
 
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
-        // TODO add your handling code here:
+        // Mendapatkan indeks baris yang dipilih
+    int selectedRow = tabelTransaksi.getSelectedRow();
+
+    // Memastikan bahwa ada baris yang dipilih sebelum melanjutkan
+    if (selectedRow != -1) {
+        // Mengambil data dari baris yang dipilih
+        String nimToDelete = tabelTransaksi.getValueAt(selectedRow, 0).toString();
+        String kodeBukuToDelete = tabelTransaksi.getValueAt(selectedRow, 1).toString();
+
+        // Menampilkan konfirmasi penghapusan
+        int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+
+        if (confirm == JOptionPane.YES_OPTION) {
+            try {
+                // Mendapatkan koneksi dari kelas DatabaseConnection
+                Connection koneksi = DatabaseConnection.getConnection();
+
+                // Membuat PreparedStatement untuk menghindari SQL injection
+                String query = "DELETE FROM transaksi_buku WHERE nim=? AND kode_buku=?";
+                PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+
+                // Mengatur nilai untuk parameter
+                preparedStatement.setString(1, nimToDelete);
+                preparedStatement.setString(2, kodeBukuToDelete);
+
+                // Menjalankan query penghapusan
+                int rowsDeleted = preparedStatement.executeUpdate();
+
+                // Menampilkan pesan hasil penghapusan
+                if (rowsDeleted > 0) {
+                    JOptionPane.showMessageDialog(this, "Data berhasil dihapus", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                    loadDataToTable();
+
+                    // Reset input fields setelah penghapusan
+                    NIM.setText("");
+                    nama.setText("");
+                    nomorHp.setText("");
+                    jurusan.setText("");
+                    kodeBuku.setText("");
+                    judulBuku.setText("");
+                    namaPengarang.setText("");
+                    penerbit.setText("");
+                    tahunTerbit.setText("");
+                    tanggalPinjam.setText("");
+                    tanggalKembali.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Gagal menghapus data", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                // Menutup sumber daya
+                preparedStatement.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DataAnggota.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    } else {
+        // Menampilkan pesan jika tidak ada baris yang dipilih
+        JOptionPane.showMessageDialog(this, "Pilih data yang ingin dihapus", "Peringatan", JOptionPane.WARNING_MESSAGE);
+    }
     }//GEN-LAST:event_hapusActionPerformed
 
     private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
@@ -653,86 +730,111 @@ public class TransaksiBuku extends javax.swing.JFrame {
     
     private static final int MAX_PINJAM_HARI = 5;
     private static final int DENDA_PER_HARI = 1000;
-
     
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
+       try {
+        // Mendapatkan tanggal pinjam
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        String tanggalPinjamStr = tanggalPinjam.getText();
+
         try {
-            // Mengambil tanggal pinjam
-            SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
-            SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date date = inputFormat.parse(tanggalPinjamStr);
+            tanggalPinjamStr = outputFormat.format(date);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+            // Tambahkan penanganan kesalahan jika format tanggal tidak valid
+            JOptionPane.showMessageDialog(this, "Format tanggal tidak valid", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Hentikan eksekusi lebih lanjut jika format tanggal tidak valid
+        }
 
-            // Mengambil tanggal kembali
-            String tanggalKembaliStr = tanggalKembali.getText();
-            String tanggalPinjamStr = tanggalPinjam.getText();
-
+        // Mendapatkan tanggal kembali dari JFormattedTextField
+        String tanggalKembaliStr = tanggalKembali.getText();
+        if (!tanggalKembaliStr.isEmpty()) {
             try {
-                java.util.Date date = inputFormat.parse(tanggalPinjamStr);
-                tanggalPinjamStr = outputFormat.format(date);
-
-                if (!tanggalKembaliStr.isEmpty()) {
-                    date = inputFormat.parse(tanggalKembaliStr);
-                    tanggalKembaliStr = outputFormat.format(date);
-                }
+                java.util.Date date = inputFormat.parse(tanggalKembaliStr);
+                tanggalKembaliStr = outputFormat.format(date);
             } catch (ParseException ex) {
                 ex.printStackTrace();
                 // Tambahkan penanganan kesalahan jika format tanggal tidak valid
-                JOptionPane.showMessageDialog(this, "Format tanggal tidak valid", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Format tanggal kembali tidak valid", "Error", JOptionPane.ERROR_MESSAGE);
                 return; // Hentikan eksekusi lebih lanjut jika format tanggal tidak valid
             }
-
-            // Menghitung tanggal kembali berdasarkan maksimal peminjaman
-            Calendar calPinjam = Calendar.getInstance();
-            try {
-                calPinjam.setTime(outputFormat.parse(tanggalPinjamStr));
-            } catch (ParseException ex) {
-                Logger.getLogger(TransaksiBuku.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            Calendar calKembali = (Calendar) calPinjam.clone();
-            calKembali.add(Calendar.DATE, MAX_PINJAM_HARI);
-
-            // Menghitung denda (jika melewati tanggal kembali)
-            int denda = hitungDenda(calKembali);
-
-            // Menyimpan data ke dalam database
-            Connection koneksi = DatabaseConnection.getConnection();
-            String updateQuery = "UPDATE transaksi_buku SET tanggal_pinjam=?, tanggal_kembali=?, denda=? WHERE nim=? AND kode_buku=?";
-            PreparedStatement updateStatement = koneksi.prepareStatement(updateQuery);
-
-            // Setel nilai untuk parameter pembaruan
-            updateStatement.setString(1, tanggalPinjamStr);
-            updateStatement.setString(2, tanggalKembaliStr);
-            updateStatement.setInt(3, denda);
-            updateStatement.setString(4, NIM.getText());
-            updateStatement.setString(5, kodeBuku.getText());
-
-            // Menjalankan kueri
-            int rowsUpdated = updateStatement.executeUpdate();
-
-            updateStatement.close();
-            // Periksa apakah pembaruan berhasil
-            if (rowsUpdated > 0) {
-                JOptionPane.showMessageDialog(this, "Data berhasil diperbarui di database", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-                loadDataToTable();
-                updateTotalDenda(NIM.getText());
-
-                // Reset input fields
-                NIM.setText("");
-                nama.setText("");
-                nomorHp.setText("");
-                jurusan.setText("");
-                kodeBuku.setText("");
-                judulBuku.setText("");
-                namaPengarang.setText("");
-                penerbit.setText("");
-                tahunTerbit.setText("");
-                tanggalPinjam.setText("");
-                tanggalKembali.setText("");
-            } else {
-                JOptionPane.showMessageDialog(this, "Gagal memperbarui data di database", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (SQLException | ClassNotFoundException ex) {
-            ex.printStackTrace();
         }
+
+        // Menyimpan data ke dalam database
+        Connection koneksi = DatabaseConnection.getConnection();
+        String nim = NIM.getText();
+        String kodeBukuStr = kodeBuku.getText();
+
+        // Query untuk menyimpan data transaksi
+        String updateQuery = "UPDATE transaksi_buku SET tanggal_pinjam=?, tanggal_kembali=?, denda=? WHERE nim=? AND kode_buku=?";
+        PreparedStatement preparedStatement = koneksi.prepareStatement(updateQuery);
+
+        // Mengatur nilai untuk parameter
+        preparedStatement.setString(1, tanggalPinjamStr);
+
+        // Mengatur tanggal_kembali berdasarkan nilai null atau tidak
+        if (!tanggalKembaliStr.isEmpty()) {
+            preparedStatement.setString(2, tanggalKembaliStr);
+        } else {
+            preparedStatement.setNull(2, java.sql.Types.DATE);
+        }
+
+        // Menghitung denda jika melebihi batas peminjaman
+        int denda = hitungDenda(tanggalPinjamStr, tanggalKembaliStr);
+        preparedStatement.setInt(3, denda);
+
+        preparedStatement.setString(4, nim);
+        preparedStatement.setString(5, kodeBukuStr);
+
+        // Menjalankan query
+        int hasil = preparedStatement.executeUpdate();
+
+        // Menampilkan pesan sukses atau gagal
+        if (hasil > 0) {
+            // Menampilkan pesan sukses menggunakan JOptionPane
+            JOptionPane.showMessageDialog(this, "Data disimpan. Denda yang dihitung: Rp " + denda, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // Menampilkan pesan jika data tidak berhasil disimpan
+            JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // Reset input fields setelah penyimpanan
+        resetInputFields();
+
+        // Menutup sumber daya
+        preparedStatement.close();
+    } catch (SQLException | ClassNotFoundException ex) {
+        ex.printStackTrace();
+    }
+}
+
+private int hitungDenda(String tanggalPinjamStr, String tanggalKembaliStr) {
+    if (tanggalKembaliStr == null || tanggalKembaliStr.isEmpty()) {
+        return 0; // Tidak ada denda jika buku belum dikembalikan
+    }
+
+    // Mendapatkan tanggal pinjam dan tanggal kembali sebagai objek Date
+    try {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date tanggalPinjam = dateFormat.parse(tanggalPinjamStr);
+        Date tanggalKembali = dateFormat.parse(tanggalKembaliStr);
+
+        // Menghitung selisih hari antara tanggal kembali dan tanggal pinjam
+        long selisihHari = daysBetween(tanggalPinjam, tanggalKembali);
+
+        // Jika melebihi batas peminjaman, hitung denda
+        if (selisihHari > MAX_PINJAM_HARI) {
+            int hariTerlambat = (int) (selisihHari - MAX_PINJAM_HARI);
+            return hariTerlambat * DENDA_PER_HARI;
+        }
+    } catch (ParseException ex) {
+        ex.printStackTrace();
+    }
+
+    return 0;
     }//GEN-LAST:event_simpanActionPerformed
 
     private void cariTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariTextActionPerformed
@@ -788,80 +890,90 @@ public class TransaksiBuku extends javax.swing.JFrame {
     }//GEN-LAST:event_tanggalKembaliActionPerformed
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
-           try {
-           // Mendapatkan tanggal pinjam
-           SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
-           SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
-           
+        try {
+        // Mendapatkan tanggal pinjam
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-           String tanggalPinjamStr = tanggalPinjam.getText();
+        String tanggalPinjamStr = tanggalPinjam.getText();
 
-           try {
-               java.util.Date date = inputFormat.parse(tanggalPinjamStr);
-               tanggalPinjamStr = outputFormat.format(date);
-           } catch (ParseException ex) {
-               ex.printStackTrace();
-               // Tambahkan penanganan kesalahan jika format tanggal tidak valid
-               JOptionPane.showMessageDialog(this, "Format tanggal tidak valid", "Error", JOptionPane.ERROR_MESSAGE);
-               return; // Hentikan eksekusi lebih lanjut jika format tanggal tidak valid
-           }
+        try {
+            java.util.Date date = inputFormat.parse(tanggalPinjamStr);
+            tanggalPinjamStr = outputFormat.format(date);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+            // Tambahkan penanganan kesalahan jika format tanggal tidak valid
+            JOptionPane.showMessageDialog(this, "Format tanggal tidak valid", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Hentikan eksekusi lebih lanjut jika format tanggal tidak valid
+        }
 
-           // Menghitung tanggal kembali berdasarkan maksimal peminjaman
-           Calendar calPinjam = Calendar.getInstance();
-           try {
-               calPinjam.setTime(outputFormat.parse(tanggalPinjamStr)); // Menggunakan tanggalPinjam yang sudah di-parse
-           } catch (ParseException ex) {
-               Logger.getLogger(TransaksiBuku.class.getName()).log(Level.SEVERE, null, ex);
-           }
-           Calendar calKembali = (Calendar) calPinjam.clone();
-           calKembali.add(Calendar.DATE, MAX_PINJAM_HARI);
-           String tanggalKembaliStr = outputFormat.format(calKembali.getTime());
+        // Menghitung tanggal kembali berdasarkan maksimal peminjaman
+        Calendar calPinjam = Calendar.getInstance();
+        try {
+            calPinjam.setTime(outputFormat.parse(tanggalPinjamStr)); // Menggunakan tanggalPinjam yang sudah di-parse
+        } catch (ParseException ex) {
+            Logger.getLogger(TransaksiBuku.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Calendar calKembali = (Calendar) calPinjam.clone();
+        calKembali.add(Calendar.DATE, MAX_PINJAM_HARI);
+        String tanggalKembaliStr = outputFormat.format(calKembali.getTime());
 
-           // Menghitung denda (jika melewati tanggal kembali)
-           int denda = hitungDenda(calKembali);
+        // Menyimpan data ke dalam database
+        Connection koneksi = DatabaseConnection.getConnection();
+        String nim = NIM.getText();
+        String kodeBukuStr = kodeBuku.getText();
 
-           // Menyimpan data ke dalam database
-           Connection koneksi = DatabaseConnection.getConnection();
-           String query = "INSERT INTO transaksi_buku (nim, kode_buku, tanggal_pinjam, tanggal_kembali, denda) VALUES (?, ?, ?, ?, ?)";
-           PreparedStatement preparedStatement = koneksi.prepareStatement(query);
+        // Check apakah buku sudah dipinjam
+        if (bukuSudahDipinjam(kodeBukuStr)) {
+            JOptionPane.showMessageDialog(this, "Buku sedang dipinjam, tidak dapat meminjam kembali", "Peringatan", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
-            // Mengatur nilai untuk parameter
-            preparedStatement.setString(1, NIM.getText());
-            preparedStatement.setString(2, kodeBuku.getText());
-            preparedStatement.setString(3, tanggalPinjamStr);
+        // Query untuk menyimpan data transaksi
+        String insertQuery = "INSERT INTO transaksi_buku (nim, kode_buku, tanggal_pinjam, tanggal_kembali, denda) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement preparedStatement = koneksi.prepareStatement(insertQuery);
 
-            // Menyimpan tanggal_kembali sebagai null
-            preparedStatement.setDate(4, null);
+        // Mengatur nilai untuk parameter
+        preparedStatement.setString(1, nim);
+        preparedStatement.setString(2, kodeBukuStr);
+        preparedStatement.setString(3, tanggalPinjamStr);
 
-            // Menyimpan denda sebagai 0
-            preparedStatement.setInt(5, 0);
-           // Menjalankan query
-           int hasil = preparedStatement.executeUpdate();
+        // Menyimpan tanggal_kembali sebagai null
+        preparedStatement.setNull(4, java.sql.Types.DATE);
 
-           // Menampilkan pesan sukses atau gagal
-           if (hasil > 0) {
-               // Menampilkan pesan sukses menggunakan JOptionPane
-               JOptionPane.showMessageDialog(this, "Data disimpan\nDenda: " + denda, "Sukses", JOptionPane.INFORMATION_MESSAGE);
-           } else {
-               // Menampilkan pesan jika data tidak berhasil disimpan
-               JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", JOptionPane.ERROR_MESSAGE);
-           }
+        // Menyimpan denda sebagai 0
+        preparedStatement.setInt(5, 0);
 
-           NIM.setText("");
-           nama.setText("");
-           nomorHp.setText("");
-           jurusan.setText("");
-           kodeBuku.setText("");
-           judulBuku.setText("");
-           namaPengarang.setText("");
-           penerbit.setText("");
-           tahunTerbit.setText("");
+        // Menjalankan query
+        int hasil = preparedStatement.executeUpdate();
 
-           // Menutup sumber daya
-           preparedStatement.close();
-       } catch (SQLException | ClassNotFoundException ex) {
-           ex.printStackTrace();
-       }
+        // Menampilkan pesan sukses atau gagal
+        if (hasil > 0) {
+            // Menampilkan pesan sukses menggunakan JOptionPane
+            JOptionPane.showMessageDialog(this, "Data disimpan", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // Menampilkan pesan jika data tidak berhasil disimpan
+            JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+
+        NIM.setText("");
+        nama.setText("");
+        nomorHp.setText("");
+        jurusan.setText("");
+        kodeBuku.setText("");
+        judulBuku.setText("");
+        namaPengarang.setText("");
+        penerbit.setText("");
+        tahunTerbit.setText("");
+        dendaText.setText("");
+        cariText.setText("");
+        cariTextBuku.setText("");
+
+        // Menutup sumber daya
+        preparedStatement.close();
+    } catch (SQLException | ClassNotFoundException ex) {
+        ex.printStackTrace();
+    }
     }//GEN-LAST:event_tambahActionPerformed
 
     private void perbaruiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perbaruiActionPerformed
@@ -891,7 +1003,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
                 // Handle null values for tanggalPinjam, tanggalKembali, and denda
                 tanggalPinjam.setText(tanggalPinjamToUpdate);
                 tanggalKembali.setText(tanggalKembaliToUpdate);
-                denda.setText(dendaToUpdate);
+                dendaText.setText(dendaToUpdate);
 
                 // Menyimpan NIM yang akan diperbarui
                 // Anda bisa menyimpannya sebagai variabel instance jika diperlukan
@@ -907,57 +1019,13 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_perbaruiActionPerformed
 
-    private void dendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dendaActionPerformed
+    private void dendaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dendaTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dendaActionPerformed
+    }//GEN-LAST:event_dendaTextActionPerformed
 
-    private int hitungDenda(Calendar tanggalKembali) {
-        int denda = 0;
-        Calendar calSekarang = Calendar.getInstance();
-
-        // Jika melewati tanggal kembali, hitung denda
-        if (calSekarang.after(tanggalKembali)) {
-            long selisihHari = daysBetween(tanggalKembali, calSekarang);
-            denda = (int) selisihHari * DENDA_PER_HARI;
-        }
-
-        return denda;
-    }
-    private long daysBetween(Calendar startDate, Calendar endDate) {
-        long diffMillis = endDate.getTimeInMillis() - startDate.getTimeInMillis();
-        return diffMillis / (24 * 60 * 60 * 1000);
-    }
-    
-    private void updateTotalDenda(String nim) {
-        try {
-            Connection koneksi = DatabaseConnection.getConnection();
-            String query = "SELECT SUM(denda) AS total FROM transaksi_buku WHERE nim=?";
-            PreparedStatement preparedStatement = koneksi.prepareStatement(query);
-
-            preparedStatement.setString(1, nim);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                int totalDenda = resultSet.getInt("total");
-
-                // Perbarui total denda dalam data pengguna
-                String updateQuery = "UPDATE transaksi_buku SET denda=? WHERE nim=?";
-                PreparedStatement updateStatement = koneksi.prepareStatement(updateQuery);
-
-                updateStatement.setInt(1, totalDenda);
-                updateStatement.setString(2, nim);
-
-                updateStatement.executeUpdate();
-                updateStatement.close();
-            }
-
-            resultSet.close();
-            preparedStatement.close();
-        } catch (SQLException | ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-    }
+    private void tanggalPinjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tanggalPinjamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tanggalPinjamActionPerformed
     
     private void switchToFrame(String frameName) {
         try {
@@ -1010,9 +1078,63 @@ public class TransaksiBuku extends javax.swing.JFrame {
         // Menutup sumber daya
         resultSet.close();
         preparedStatement.close();
-    } catch (SQLException | ClassNotFoundException ex) {
-        ex.printStackTrace();
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
+    
+    private int hitungDenda(Calendar calPinjam, Calendar calKembali) {
+        // Mendapatkan tanggal sekarang
+        Calendar calSekarang = Calendar.getInstance();
+
+        // Menghitung selisih hari antara tanggal kembali dan tanggal sekarang
+        long selisihHari = daysBetween(calKembali.getTime(), calSekarang.getTime());
+
+        // Jika melebihi batas peminjaman, hitung denda
+        if (selisihHari > MAX_PINJAM_HARI) {
+            int hariTerlambat = (int) (selisihHari - MAX_PINJAM_HARI);
+            return hariTerlambat * DENDA_PER_HARI;
+        } else {
+            return 0; // Tidak ada denda jika belum melebihi batas peminjaman
+        }
+    }
+    
+    private long daysBetween(Date startDate, Date endDate) {
+    long differenceMillis = endDate.getTime() - startDate.getTime();
+    return differenceMillis / (24 * 60 * 60 * 1000);
+    }
+    
+    private void resetInputFields() {
+        // Reset semua input fields setelah penyimpanan
+        NIM.setText("");
+        nama.setText("");
+        nomorHp.setText("");
+        jurusan.setText("");
+        kodeBuku.setText("");
+        judulBuku.setText("");
+        namaPengarang.setText("");
+        penerbit.setText("");
+        tahunTerbit.setText("");
+        tanggalPinjam.setText("");
+        tanggalKembali.setText("");
+        dendaText.setText("");
+        cariTextBuku.setText("");
+        cariText.setText("");
+    }
+    
+    private boolean bukuSudahDipinjam(String kodeBuku) throws SQLException, ClassNotFoundException {
+        Connection koneksi = DatabaseConnection.getConnection();
+        String query = "SELECT COUNT(*) FROM transaksi_buku WHERE kode_buku=? AND tanggal_kembali IS NULL";
+        try (PreparedStatement preparedStatement = koneksi.prepareStatement(query)) {
+            preparedStatement.setString(1, kodeBuku);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int jumlahPinjam = resultSet.getInt(1);
+                    return jumlahPinjam > 0;
+                }
+            }
+        }
+        return false;
     }
     
     /**
@@ -1059,7 +1181,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
     private javax.swing.JButton cariBuku;
     private javax.swing.JTextField cariText;
     private javax.swing.JTextField cariTextBuku;
-    private javax.swing.JTextField denda;
+    private javax.swing.JTextField dendaText;
     private javax.swing.JButton hapus;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
@@ -1067,7 +1189,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
