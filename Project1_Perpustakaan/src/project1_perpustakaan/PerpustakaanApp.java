@@ -45,24 +45,24 @@ public class PerpustakaanApp extends javax.swing.JFrame {
         passwordTxt = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 450));
 
         layoutLogin.setBackground(new java.awt.Color(153, 204, 255));
         layoutLogin.setForeground(new java.awt.Color(255, 255, 255));
         layoutLogin.setPreferredSize(new java.awt.Dimension(800, 450));
 
-        jLabel3.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Century751 BT", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 102));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Username");
 
-        jLabel4.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Century751 BT", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 102));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Password");
 
-        loginButton.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        loginButton.setForeground(new java.awt.Color(0, 51, 102));
+        loginButton.setBackground(new java.awt.Color(0, 102, 153));
+        loginButton.setFont(new java.awt.Font("Century751 BT", 1, 20)); // NOI18N
+        loginButton.setForeground(new java.awt.Color(153, 255, 204));
         loginButton.setText("LOGIN");
         loginButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +77,7 @@ public class PerpustakaanApp extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Century751 BT", 1, 22)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 102));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("LOGIN ADMIN");
@@ -101,20 +101,21 @@ public class PerpustakaanApp extends javax.swing.JFrame {
                             .addComponent(passwordTxt)))
                     .addComponent(jLabel2)
                     .addGroup(layoutLoginLayout.createSequentialGroup()
-                        .addGap(336, 336, 336)
-                        .addComponent(jLabel5))
-                    .addGroup(layoutLoginLayout.createSequentialGroup()
                         .addGap(350, 350, 350)
                         .addComponent(loginButton)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layoutLoginLayout.createSequentialGroup()
+                .addGap(321, 321, 321)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layoutLoginLayout.setVerticalGroup(
             layoutLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layoutLoginLayout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addGap(49, 49, 49)
+                .addGap(47, 47, 47)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
                 .addGroup(layoutLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -124,7 +125,7 @@ public class PerpustakaanApp extends javax.swing.JFrame {
                     .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addComponent(loginButton)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

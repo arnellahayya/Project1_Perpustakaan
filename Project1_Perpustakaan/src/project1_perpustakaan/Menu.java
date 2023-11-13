@@ -34,14 +34,15 @@ public class Menu extends javax.swing.JFrame {
         logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 450));
 
-        dataAnggota.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        dataAnggota.setForeground(new java.awt.Color(0, 51, 102));
+        dataAnggota.setBackground(new java.awt.Color(0, 102, 153));
+        dataAnggota.setFont(new java.awt.Font("Century751 BT", 1, 20)); // NOI18N
+        dataAnggota.setForeground(new java.awt.Color(153, 255, 204));
         dataAnggota.setText("DATA ANGGOTA");
+        dataAnggota.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dataAnggota.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         dataAnggota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,9 +50,11 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        dataBuku.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        dataBuku.setForeground(new java.awt.Color(0, 51, 102));
+        dataBuku.setBackground(new java.awt.Color(0, 102, 153));
+        dataBuku.setFont(new java.awt.Font("Century751 BT", 1, 20)); // NOI18N
+        dataBuku.setForeground(new java.awt.Color(153, 255, 204));
         dataBuku.setText("DATA BUKU");
+        dataBuku.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dataBuku.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         dataBuku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,9 +62,11 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        transaksiBuku.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        transaksiBuku.setForeground(new java.awt.Color(0, 51, 102));
+        transaksiBuku.setBackground(new java.awt.Color(0, 102, 153));
+        transaksiBuku.setFont(new java.awt.Font("Century751 BT", 1, 20)); // NOI18N
+        transaksiBuku.setForeground(new java.awt.Color(153, 255, 204));
         transaksiBuku.setText("TRANSAKSI BUKU");
+        transaksiBuku.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         transaksiBuku.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         transaksiBuku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,9 +76,11 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project1_perpustakaan/4.png"))); // NOI18N
 
-        logoutButton.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        logoutButton.setForeground(new java.awt.Color(0, 51, 102));
+        logoutButton.setBackground(new java.awt.Color(0, 102, 153));
+        logoutButton.setFont(new java.awt.Font("Century751 BT", 1, 20)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(153, 255, 204));
         logoutButton.setText("LOGOUT");
+        logoutButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,25 +92,27 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(dataAnggota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dataBuku, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(transaksiBuku)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(logoutButton)
-                        .addGap(29, 29, 29)))
-                .addGap(328, 328, 328))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(279, 279, 279)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(dataAnggota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dataBuku, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(transaksiBuku))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(logoutButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(58, 58, 58)
+                .addGap(56, 56, 56)
                 .addComponent(dataAnggota)
                 .addGap(31, 31, 31)
                 .addComponent(dataBuku)
@@ -111,7 +120,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(transaksiBuku)
                 .addGap(30, 30, 30)
                 .addComponent(logoutButton)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
