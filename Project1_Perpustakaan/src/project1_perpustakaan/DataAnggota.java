@@ -82,32 +82,32 @@ public class DataAnggota extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 380));
 
-        jLabel3.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Century751 BT", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 102));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("NIM");
 
-        jLabel4.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Century751 BT", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 102));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Nama");
 
-        jLabel5.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Century751 BT", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 102));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Jenis Kelamin");
 
-        jLabel6.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Century751 BT", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 102));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("No. HP");
 
-        jLabel7.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Century751 BT", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 51, 102));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Email");
 
-        jLabel8.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Century751 BT", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 102));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Jurusan");
@@ -149,63 +149,77 @@ public class DataAnggota extends javax.swing.JFrame {
             }
         });
 
-        tambah.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        tambah.setForeground(new java.awt.Color(0, 51, 102));
+        tambah.setBackground(new java.awt.Color(0, 102, 153));
+        tambah.setFont(new java.awt.Font("Century751 BT", 1, 14)); // NOI18N
+        tambah.setForeground(new java.awt.Color(153, 255, 255));
         tambah.setText("Tambah");
+        tambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tambahActionPerformed(evt);
             }
         });
 
-        simpan.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        simpan.setForeground(new java.awt.Color(0, 51, 102));
+        simpan.setBackground(new java.awt.Color(0, 102, 153));
+        simpan.setFont(new java.awt.Font("Century751 BT", 1, 14)); // NOI18N
+        simpan.setForeground(new java.awt.Color(153, 255, 255));
         simpan.setText("Simpan");
+        simpan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 simpanActionPerformed(evt);
             }
         });
 
-        batal.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        batal.setForeground(new java.awt.Color(0, 51, 102));
+        batal.setBackground(new java.awt.Color(0, 102, 153));
+        batal.setFont(new java.awt.Font("Century751 BT", 1, 14)); // NOI18N
+        batal.setForeground(new java.awt.Color(153, 255, 255));
         batal.setText("Batal");
+        batal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         batal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 batalActionPerformed(evt);
             }
         });
 
-        perbarui.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        perbarui.setForeground(new java.awt.Color(0, 51, 102));
+        perbarui.setBackground(new java.awt.Color(0, 102, 153));
+        perbarui.setFont(new java.awt.Font("Century751 BT", 1, 14)); // NOI18N
+        perbarui.setForeground(new java.awt.Color(153, 255, 255));
         perbarui.setText("Perbarui");
+        perbarui.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         perbarui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 perbaruiActionPerformed(evt);
             }
         });
 
-        keluar.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        keluar.setForeground(new java.awt.Color(0, 51, 102));
+        keluar.setBackground(new java.awt.Color(0, 102, 153));
+        keluar.setFont(new java.awt.Font("Century751 BT", 1, 14)); // NOI18N
+        keluar.setForeground(new java.awt.Color(153, 255, 255));
         keluar.setText("Keluar");
+        keluar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         keluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 keluarActionPerformed(evt);
             }
         });
 
-        hapus.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        hapus.setForeground(new java.awt.Color(0, 51, 102));
+        hapus.setBackground(new java.awt.Color(0, 102, 153));
+        hapus.setFont(new java.awt.Font("Century751 BT", 1, 14)); // NOI18N
+        hapus.setForeground(new java.awt.Color(153, 255, 255));
         hapus.setText("Hapus");
+        hapus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hapusActionPerformed(evt);
             }
         });
 
-        tampil.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        tampil.setForeground(new java.awt.Color(0, 51, 102));
+        tampil.setBackground(new java.awt.Color(0, 102, 153));
+        tampil.setFont(new java.awt.Font("Century751 BT", 1, 14)); // NOI18N
+        tampil.setForeground(new java.awt.Color(153, 255, 255));
         tampil.setText("Tampil");
+        tampil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tampil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tampilActionPerformed(evt);
@@ -225,6 +239,7 @@ public class DataAnggota extends javax.swing.JFrame {
                 "NIM", "Nama", "Jenis Kelamin", "No HP", "Email", "Jurusan"
             }
         ));
+        tabelDatabase.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(tabelDatabase);
 
         jurusan.addActionListener(new java.awt.event.ActionListener() {
@@ -233,9 +248,11 @@ public class DataAnggota extends javax.swing.JFrame {
             }
         });
 
-        cari.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        cari.setForeground(new java.awt.Color(0, 51, 102));
+        cari.setBackground(new java.awt.Color(0, 102, 153));
+        cari.setFont(new java.awt.Font("Century751 BT", 1, 14)); // NOI18N
+        cari.setForeground(new java.awt.Color(153, 255, 255));
         cari.setText("Cari ");
+        cari.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cariActionPerformed(evt);

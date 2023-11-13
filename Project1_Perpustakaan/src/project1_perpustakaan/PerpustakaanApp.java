@@ -62,7 +62,7 @@ public class PerpustakaanApp extends javax.swing.JFrame {
 
         loginButton.setBackground(new java.awt.Color(0, 102, 153));
         loginButton.setFont(new java.awt.Font("Century751 BT", 1, 20)); // NOI18N
-        loginButton.setForeground(new java.awt.Color(153, 255, 204));
+        loginButton.setForeground(new java.awt.Color(153, 255, 255));
         loginButton.setText("LOGIN");
         loginButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         loginButton.addActionListener(new java.awt.event.ActionListener() {
