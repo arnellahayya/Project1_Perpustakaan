@@ -40,7 +40,7 @@ public class Menu extends javax.swing.JFrame {
 
         dataAnggota.setBackground(new java.awt.Color(0, 102, 153));
         dataAnggota.setFont(new java.awt.Font("Century751 BT", 1, 20)); // NOI18N
-        dataAnggota.setForeground(new java.awt.Color(204, 255, 255));
+        dataAnggota.setForeground(new java.awt.Color(153, 255, 255));
         dataAnggota.setText("DATA ANGGOTA");
         dataAnggota.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dataAnggota.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -52,7 +52,7 @@ public class Menu extends javax.swing.JFrame {
 
         dataBuku.setBackground(new java.awt.Color(0, 102, 153));
         dataBuku.setFont(new java.awt.Font("Century751 BT", 1, 20)); // NOI18N
-        dataBuku.setForeground(new java.awt.Color(204, 255, 255));
+        dataBuku.setForeground(new java.awt.Color(153, 255, 255));
         dataBuku.setText("DATA BUKU");
         dataBuku.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dataBuku.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -64,7 +64,7 @@ public class Menu extends javax.swing.JFrame {
 
         transaksiBuku.setBackground(new java.awt.Color(0, 102, 153));
         transaksiBuku.setFont(new java.awt.Font("Century751 BT", 1, 20)); // NOI18N
-        transaksiBuku.setForeground(new java.awt.Color(204, 255, 255));
+        transaksiBuku.setForeground(new java.awt.Color(153, 255, 255));
         transaksiBuku.setText("TRANSAKSI BUKU");
         transaksiBuku.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         transaksiBuku.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -78,7 +78,7 @@ public class Menu extends javax.swing.JFrame {
 
         logoutButton.setBackground(new java.awt.Color(0, 102, 153));
         logoutButton.setFont(new java.awt.Font("Century751 BT", 1, 20)); // NOI18N
-        logoutButton.setForeground(new java.awt.Color(204, 255, 255));
+        logoutButton.setForeground(new java.awt.Color(153, 255, 255));
         logoutButton.setText("LOGOUT");
         logoutButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoutButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
