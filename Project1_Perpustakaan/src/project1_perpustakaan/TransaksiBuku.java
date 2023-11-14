@@ -82,10 +82,12 @@ public class TransaksiBuku extends javax.swing.JFrame {
         tanggalPinjam = new javax.swing.JFormattedTextField();
         tanggalKembali = new javax.swing.JFormattedTextField();
         jLabel15 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         layoutTransaksi.setBackground(new java.awt.Color(153, 204, 255));
         layoutTransaksi.setPreferredSize(new java.awt.Dimension(800, 450));
@@ -93,7 +95,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
         anggota.setBackground(new java.awt.Color(153, 204, 255));
         anggota.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel3.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 102));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("NIM");
@@ -104,7 +106,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 102));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Nama");
@@ -115,7 +117,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 102));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Jurusan");
@@ -126,7 +128,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 102));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("No. HP");
@@ -150,7 +152,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(62, 62, 62)
                 .addGroup(anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NIM)
+                    .addComponent(NIM, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                     .addComponent(nama)
                     .addComponent(jurusan)
                     .addComponent(nomorHp))
@@ -179,7 +181,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
         buku.setBackground(new java.awt.Color(153, 204, 255));
         buku.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel5.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 102));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Kode Buku");
@@ -190,7 +192,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 51, 102));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Judul Buku");
@@ -201,7 +203,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 102));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Nama Pengarang");
@@ -212,7 +214,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 51, 102));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Penerbit");
@@ -223,7 +225,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 51, 102));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Tahun Terbit");
@@ -241,23 +243,19 @@ public class TransaksiBuku extends javax.swing.JFrame {
             .addGroup(bukuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bukuLayout.createSequentialGroup()
-                        .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel5))
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bukuLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(penerbit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                    .addComponent(namaPengarang, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(judulBuku, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(kodeBuku, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel9))
+                .addGap(20, 20, 20)
+                .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(kodeBuku, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                    .addComponent(judulBuku)
+                    .addComponent(namaPengarang)
+                    .addComponent(penerbit)
                     .addComponent(tahunTerbit))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         bukuLayout.setVerticalGroup(
             bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,8 +278,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bukuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tahunTerbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 6, Short.MAX_VALUE))
+                    .addComponent(tahunTerbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         cariText.addActionListener(new java.awt.event.ActionListener() {
@@ -290,9 +287,11 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        tambah.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        tambah.setForeground(new java.awt.Color(0, 51, 102));
+        tambah.setBackground(new java.awt.Color(0, 102, 153));
+        tambah.setFont(new java.awt.Font("Century751 BT", 1, 13)); // NOI18N
+        tambah.setForeground(new java.awt.Color(153, 255, 255));
         tambah.setText("Tambah");
+        tambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tambah.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,9 +299,11 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        cari.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        cari.setForeground(new java.awt.Color(0, 51, 102));
+        cari.setBackground(new java.awt.Color(0, 102, 153));
+        cari.setFont(new java.awt.Font("Century751 BT", 1, 13)); // NOI18N
+        cari.setForeground(new java.awt.Color(153, 255, 255));
         cari.setText("Cari");
+        cari.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cari.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,9 +311,11 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        simpan.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        simpan.setForeground(new java.awt.Color(0, 51, 102));
+        simpan.setBackground(new java.awt.Color(0, 102, 153));
+        simpan.setFont(new java.awt.Font("Century751 BT", 1, 13)); // NOI18N
+        simpan.setForeground(new java.awt.Color(153, 255, 255));
         simpan.setText("Simpan");
+        simpan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         simpan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,14 +323,18 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        batal.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        batal.setForeground(new java.awt.Color(0, 51, 102));
+        batal.setBackground(new java.awt.Color(0, 102, 153));
+        batal.setFont(new java.awt.Font("Century751 BT", 1, 13)); // NOI18N
+        batal.setForeground(new java.awt.Color(153, 255, 255));
         batal.setText("Batal");
+        batal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         batal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        perbarui.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        perbarui.setForeground(new java.awt.Color(0, 51, 102));
+        perbarui.setBackground(new java.awt.Color(0, 102, 153));
+        perbarui.setFont(new java.awt.Font("Century751 BT", 1, 13)); // NOI18N
+        perbarui.setForeground(new java.awt.Color(153, 255, 255));
         perbarui.setText("Perbarui");
+        perbarui.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         perbarui.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         perbarui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,9 +342,11 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        hapus.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        hapus.setForeground(new java.awt.Color(0, 51, 102));
+        hapus.setBackground(new java.awt.Color(0, 102, 153));
+        hapus.setFont(new java.awt.Font("Century751 BT", 1, 13)); // NOI18N
+        hapus.setForeground(new java.awt.Color(153, 255, 255));
         hapus.setText("Hapus");
+        hapus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hapus.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,9 +354,11 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        keluar.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        keluar.setForeground(new java.awt.Color(0, 51, 102));
+        keluar.setBackground(new java.awt.Color(0, 102, 153));
+        keluar.setFont(new java.awt.Font("Century751 BT", 1, 13)); // NOI18N
+        keluar.setForeground(new java.awt.Color(153, 255, 255));
         keluar.setText("Keluar");
+        keluar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         keluar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         keluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,9 +366,11 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        tampil.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        tampil.setForeground(new java.awt.Color(0, 51, 102));
+        tampil.setBackground(new java.awt.Color(0, 102, 153));
+        tampil.setFont(new java.awt.Font("Century751 BT", 1, 13)); // NOI18N
+        tampil.setForeground(new java.awt.Color(153, 255, 255));
         tampil.setText("Tampil");
+        tampil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tampil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tampil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,15 +378,15 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 51, 102));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Tanggal Pinjam    :");
 
-        jLabel13.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 51, 102));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("Denda                      :");
+        jLabel13.setText("Denda   :");
 
         dendaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -416,9 +429,11 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        cariBuku.setFont(new java.awt.Font("Bodoni MT", 1, 14)); // NOI18N
-        cariBuku.setForeground(new java.awt.Color(0, 51, 102));
+        cariBuku.setBackground(new java.awt.Color(0, 102, 153));
+        cariBuku.setFont(new java.awt.Font("Century751 BT", 1, 13)); // NOI18N
+        cariBuku.setForeground(new java.awt.Color(153, 255, 255));
         cariBuku.setText("Cari");
+        cariBuku.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cariBuku.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cariBuku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -438,110 +453,114 @@ public class TransaksiBuku extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Bodoni MT", 1, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Century751 BT", 1, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 51, 102));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Tanggal Kembali  :");
+
+        jLabel2.setFont(new java.awt.Font("Century751 BT", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel2.setText("BIODATA MAHASISWA");
 
         javax.swing.GroupLayout layoutTransaksiLayout = new javax.swing.GroupLayout(layoutTransaksi);
         layoutTransaksi.setLayout(layoutTransaksiLayout);
         layoutTransaksiLayout.setHorizontalGroup(
             layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
+                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layoutTransaksiLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1))
+                    .addGroup(layoutTransaksiLayout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layoutTransaksiLayout.createSequentialGroup()
+                                    .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(dendaText, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cariTextBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cariBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(11, 11, 11)))
+                .addGap(21, 21, 21))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layoutTransaksiLayout.createSequentialGroup()
                         .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(anggota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tanggalPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layoutTransaksiLayout.createSequentialGroup()
+                                        .addComponent(cariText, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tanggalKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
+                                    .addComponent(tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(perbarui)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(simpan, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(batal, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(anggota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12))
+                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                                .addComponent(cariText)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dendaText, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(16, 16, 16)))
-                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tampil, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                                .addGap(148, 148, 148)
-                                .addComponent(cariTextBuku)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cariBuku, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layoutTransaksiLayout.createSequentialGroup()
-                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(tambah)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(perbarui)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(simpan)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(batal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hapus)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tampil)
-                                .addGap(184, 184, 184)
-                                .addComponent(keluar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tanggalPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tanggalKembali)
-                                .addGap(3, 3, 3)))
-                        .addGap(21, 21, 21))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel13))))
+                    .addComponent(jLabel15))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layoutTransaksiLayout.setVerticalGroup(
             layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(6, 6, 6)
+                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                        .addComponent(buku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cariTextBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cariBuku)))
-                    .addGroup(layoutTransaksiLayout.createSequentialGroup()
-                        .addComponent(anggota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cari)
-                            .addComponent(cariText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dendaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(anggota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cariBuku)
+                        .addComponent(cariText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cari))
+                    .addComponent(cariTextBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tanggalPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tanggalKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(simpan)
-                        .addComponent(batal)
-                        .addComponent(hapus)
-                        .addComponent(keluar)
-                        .addComponent(tampil))
-                    .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tambah)
-                        .addComponent(perbarui)))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dendaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tanggalKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layoutTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(simpan)
+                    .addComponent(batal)
+                    .addComponent(hapus)
+                    .addComponent(keluar)
+                    .addComponent(tampil)
+                    .addComponent(perbarui)
+                    .addComponent(tambah))
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project1_perpustakaan/3.png"))); // NOI18N
@@ -574,7 +593,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(layoutTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE))
+                .addComponent(layoutTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE))
         );
 
         pack();
@@ -1190,6 +1209,7 @@ private int hitungDenda(String tanggalPinjamStr, String tanggalKembaliStr) {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

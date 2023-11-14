@@ -45,6 +45,7 @@ public class PerpustakaanApp extends javax.swing.JFrame {
         passwordTxt = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         layoutLogin.setBackground(new java.awt.Color(153, 204, 255));
         layoutLogin.setForeground(new java.awt.Color(255, 255, 255));
