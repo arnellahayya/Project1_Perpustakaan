@@ -155,11 +155,7 @@ public class PerpustakaanApp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Username / Password Salah!", "Kesalahan", JOptionPane.ERROR_MESSAGE);
         }
         try {
-            
-        // Membuat koneksi ke database
             Connection koneksi = DatabaseConnection.getConnection();
-
-
         } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }

@@ -16,7 +16,6 @@ import java.sql.ResultSet;
 /**
  *
  * @author Musariul
- * @author Arnella
  */
 public class DataAnggota extends javax.swing.JFrame {
 
@@ -423,14 +422,11 @@ public class DataAnggota extends javax.swing.JFrame {
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
         try {
-            // Mendapatkan koneksi dari kelas DatabaseConnection
             Connection koneksi = DatabaseConnection.getConnection();
 
-            // Membuat PreparedStatement untuk menghindari SQL injection
             String query = "UPDATE data_anggota SET nama=?, jenis_kelamin=?, no_hp=?, email=?, jurusan=? WHERE nim=?";
             PreparedStatement preparedStatement = koneksi.prepareStatement(query);
 
-            // Mengatur nilai untuk parameter-parameter
             preparedStatement.setString(1, nama.getText());
             preparedStatement.setString(2, jenisKelamin.getText());
             preparedStatement.setString(3, nomorHp.getText());
@@ -438,17 +434,13 @@ public class DataAnggota extends javax.swing.JFrame {
             preparedStatement.setString(5, jurusan.getText());
             preparedStatement.setString(6, NIM.getText());
 
-            // Menjalankan query
             int rowsAffected = preparedStatement.executeUpdate();
 
             if (rowsAffected > 0) {
-                // Menampilkan pesan sukses menggunakan JOptionPane
                 JOptionPane.showMessageDialog(this, "Data berhasil diperbarui di database", "Sukses", JOptionPane.INFORMATION_MESSAGE);
 
-                // Menyegarkan tabel
                 updateTable();
 
-                // Mengosongkan JTextField setelah pembaruan berhasil
                 NIM.setText("");
                 nama.setText("");
                 jenisKelamin.setText("");
@@ -457,11 +449,9 @@ public class DataAnggota extends javax.swing.JFrame {
                 jurusan.setText("");
                 cariText.setText("");
             } else {
-                // Menangani kasus jika tidak ada baris yang terpengaruh (pembaruan gagal)
                 JOptionPane.showMessageDialog(this, "Gagal memperbarui data di database", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
-            // Menutup sumber daya
             preparedStatement.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -481,13 +471,11 @@ public class DataAnggota extends javax.swing.JFrame {
     }//GEN-LAST:event_batalActionPerformed
 
     private void perbaruiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perbaruiActionPerformed
-        // Mendapatkan indeks baris yang dipilih
+
     int selectedRow = tabelDatabase.getSelectedRow();
 
-    // Memastikan bahwa ada baris yang dipilih sebelum memperbarui
     if (selectedRow != -1) {
         try {
-            // Mendapatkan data dari baris yang dipilih
             String nimToUpdate = tabelDatabase.getValueAt(selectedRow, 0).toString();
             String namaToUpdate = tabelDatabase.getValueAt(selectedRow, 1).toString();
             String jenisKelaminToUpdate = tabelDatabase.getValueAt(selectedRow, 2).toString();
@@ -495,7 +483,6 @@ public class DataAnggota extends javax.swing.JFrame {
             String emailToUpdate = tabelDatabase.getValueAt(selectedRow, 4).toString();
             String jurusanToUpdate = tabelDatabase.getValueAt(selectedRow, 5).toString();
 
-            // Menampilkan data pada JTextField
             NIM.setText(nimToUpdate);
             nama.setText(namaToUpdate);
             jenisKelamin.setText(jenisKelaminToUpdate);
@@ -503,16 +490,10 @@ public class DataAnggota extends javax.swing.JFrame {
             email.setText(emailToUpdate);
             jurusan.setText(jurusanToUpdate);
 
-            // Menyimpan NIM yang akan diperbarui
-            // Anda bisa menyimpannya sebagai variabel instance jika diperlukan
-            // Contoh: this.nimToUpdate = nimToUpdate;
-
-            // Tambahkan logika lain yang diperlukan untuk proses perbarui
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     } else {
-        // Menampilkan pesan jika tidak ada baris yang dipilih
         JOptionPane.showMessageDialog(this, "Pilih data yang ingin diperbarui", "Peringatan", JOptionPane.WARNING_MESSAGE);
     }
     }//GEN-LAST:event_perbaruiActionPerformed
@@ -521,18 +502,29 @@ public class DataAnggota extends javax.swing.JFrame {
         String Menu = "Menu"; 
         switchToFrame(Menu);
     }//GEN-LAST:event_keluarActionPerformed
-
+    
+    private void switchToFrame(String frameName) {
+        try {
+            this.dispose(); 
+            if (frameName.equals("Menu")) { 
+                Menu menu = new Menu();
+                menu.setVisible(true);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
-        // Mendapatkan indeks baris yang dipilih
-        int selectedRow = tabelDatabase.getSelectedRow();
+    int selectedRow = tabelDatabase.getSelectedRow();
 
-        // Memastikan bahwa ada baris yang dipilih sebelum menghapus
-        if (selectedRow != -1) {
+    if (selectedRow != -1) {
+        int confirm = JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin menghapus data ini?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        if (confirm == JOptionPane.YES_OPTION) {
             try {
-                // Mendapatkan NIM dari baris yang dipilih
                 String nimToDelete = tabelDatabase.getValueAt(selectedRow, 0).toString();
 
-                // Menghapus data dari database
                 Connection koneksi = DatabaseConnection.getConnection();
                 String query = "DELETE FROM data_anggota WHERE nim = ?";
                 PreparedStatement preparedStatement = koneksi.prepareStatement(query);
@@ -540,23 +532,20 @@ public class DataAnggota extends javax.swing.JFrame {
                 int rowsAffected = preparedStatement.executeUpdate();
 
                 if (rowsAffected > 0) {
-                    // Menampilkan pesan sukses dan mengupdate tabel
                     JOptionPane.showMessageDialog(this, "Data berhasil dihapus dari database", "Sukses", JOptionPane.INFORMATION_MESSAGE);
                     updateTable();
                 } else {
-                    // Menampilkan pesan kesalahan jika penghapusan gagal
                     JOptionPane.showMessageDialog(this, "Gagal menghapus data dari database", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
-                // Menutup resources
                 preparedStatement.close();
             } catch (SQLException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
-        } else {
-            // Menampilkan pesan jika tidak ada baris yang dipilih
-            JOptionPane.showMessageDialog(this, "Pilih data yang ingin dihapus", "Peringatan", JOptionPane.WARNING_MESSAGE);
         }
+        }else {
+            JOptionPane.showMessageDialog(this, "Pilih data yang ingin dihapus", "Peringatan", JOptionPane.WARNING_MESSAGE);
+    }
     }//GEN-LAST:event_hapusActionPerformed
 
     private void tampilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tampilActionPerformed
@@ -565,14 +554,11 @@ public class DataAnggota extends javax.swing.JFrame {
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
         try {
-            // Getting a connection from your DatabaseConnection class
             Connection koneksi = DatabaseConnection.getConnection();
 
-            // Creating a PreparedStatement to avoid SQL injection
             String query = "INSERT INTO data_anggota (nim, nama, jenis_kelamin, no_hp, email, jurusan) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = koneksi.prepareStatement(query);
 
-            // Setting values for the parameters
             preparedStatement.setString(1, NIM.getText());
             preparedStatement.setString(2, nama.getText());
             preparedStatement.setString(3, jenisKelamin.getText());
@@ -580,11 +566,9 @@ public class DataAnggota extends javax.swing.JFrame {
             preparedStatement.setString(5, email.getText());
             preparedStatement.setString(6, jurusan.getText());
 
-            // Executing the query
             int rowsAffected = preparedStatement.executeUpdate();
 
             if (rowsAffected > 0) {
-                // Display a success message using a JOptionPane
                 JOptionPane.showMessageDialog(this, "Data berhasil dimasukkan ke database", "Sukses", JOptionPane.INFORMATION_MESSAGE);
                 
                 updateTable();
@@ -595,12 +579,9 @@ public class DataAnggota extends javax.swing.JFrame {
                 nomorHp.setText("");
                 email.setText("");
                 jurusan.setText("");
-                // You can add additional actions for success here
 
-                // Closing resources
                 preparedStatement.close();
             } else {
-                // Handle the case where no rows were affected (insertion failed)
                 JOptionPane.showMessageDialog(this, "Gagal memasukkan data ke database", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
@@ -617,21 +598,16 @@ public class DataAnggota extends javax.swing.JFrame {
     private void cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariActionPerformed
                                
         try {
-            // Mendapatkan koneksi dari kelas DatabaseConnection
             Connection koneksi = DatabaseConnection.getConnection();
 
-            // Membuat PreparedStatement untuk menghindari SQL injection
             String query = "SELECT * FROM data_anggota WHERE nim=?";
             PreparedStatement preparedStatement = koneksi.prepareStatement(query);
 
-            // Mengatur nilai untuk parameter
             preparedStatement.setString(1, cariText.getText());
 
-            // Menjalankan query
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                // Menampilkan data yang ditemukan ke dalam JTextField
                 NIM.setText(resultSet.getString("nim"));
                 nama.setText(resultSet.getString("nama"));
                 jenisKelamin.setText(resultSet.getString("jenis_kelamin"));
@@ -639,14 +615,11 @@ public class DataAnggota extends javax.swing.JFrame {
                 email.setText(resultSet.getString("email"));
                 jurusan.setText(resultSet.getString("jurusan"));
 
-                // Menampilkan pesan sukses menggunakan JOptionPane
                 JOptionPane.showMessageDialog(this, "Data ditemukan", "Sukses", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                // Menampilkan pesan jika data tidak ditemukan
                 JOptionPane.showMessageDialog(this, "Data tidak ditemukan", "Peringatan", JOptionPane.WARNING_MESSAGE);
             }
 
-            // Menutup sumber daya
             preparedStatement.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -656,17 +629,6 @@ public class DataAnggota extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cariActionPerformed
 
-    private void switchToFrame(String frameName) {
-        try {
-            this.dispose(); 
-            if (frameName.equals("Menu")) { 
-                Menu menu = new Menu();
-                menu.setVisible(true);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
     
     private void updateTable() {
         try {
@@ -676,7 +638,7 @@ public class DataAnggota extends javax.swing.JFrame {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel) tabelDatabase.getModel();
-            model.setRowCount(0); // Hapus data yang sudah ada di tabel
+            model.setRowCount(0); 
 
             while (resultSet.next()) {
                 Object[] row = {
