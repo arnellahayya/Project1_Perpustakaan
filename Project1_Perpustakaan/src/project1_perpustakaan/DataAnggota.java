@@ -48,7 +48,6 @@ public class DataAnggota extends javax.swing.JFrame {
         nama = new javax.swing.JTextField();
         nomorHp = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
-        jenisKelamin = new javax.swing.JTextField();
         cariText = new javax.swing.JTextField();
         tambah = new javax.swing.JButton();
         simpan = new javax.swing.JButton();
@@ -61,6 +60,7 @@ public class DataAnggota extends javax.swing.JFrame {
         tabelDatabase = new javax.swing.JTable();
         jurusan = new javax.swing.JTextField();
         cari = new javax.swing.JButton();
+        jenisKelamin = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -133,12 +133,6 @@ public class DataAnggota extends javax.swing.JFrame {
         email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailActionPerformed(evt);
-            }
-        });
-
-        jenisKelamin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jenisKelaminActionPerformed(evt);
             }
         });
 
@@ -273,6 +267,8 @@ public class DataAnggota extends javax.swing.JFrame {
             }
         });
 
+        jenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-laki", "Perempuan" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -287,13 +283,13 @@ public class DataAnggota extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
                 .addGap(62, 62, 62)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NIM, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nomorHp, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jurusan, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(NIM, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addComponent(nama, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addComponent(nomorHp, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addComponent(jurusan, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                    .addComponent(jenisKelamin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -335,10 +331,10 @@ public class DataAnggota extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(batal)
                     .addComponent(perbarui)
-                    .addComponent(tampil))
+                    .addComponent(tampil)
+                    .addComponent(jenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -413,10 +409,6 @@ public class DataAnggota extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_emailActionPerformed
 
-    private void jenisKelaminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenisKelaminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jenisKelaminActionPerformed
-
     private void cariTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cariTextActionPerformed
@@ -429,7 +421,7 @@ public class DataAnggota extends javax.swing.JFrame {
             PreparedStatement preparedStatement = koneksi.prepareStatement(query);
 
             preparedStatement.setString(1, nama.getText());
-            preparedStatement.setString(2, jenisKelamin.getText());
+            preparedStatement.setString(2, (String) jenisKelamin.getSelectedItem());
             preparedStatement.setString(3, nomorHp.getText());
             preparedStatement.setString(4, email.getText());
             preparedStatement.setString(5, jurusan.getText());
@@ -444,7 +436,7 @@ public class DataAnggota extends javax.swing.JFrame {
 
                 NIM.setText("");
                 nama.setText("");
-                jenisKelamin.setText("");
+                
                 nomorHp.setText("");
                 email.setText("");
                 jurusan.setText("");
@@ -464,7 +456,7 @@ public class DataAnggota extends javax.swing.JFrame {
     private void batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalActionPerformed
         NIM.setText("");
         nama.setText("");
-        jenisKelamin.setText("");
+        
         nomorHp.setText("");
         email.setText("");
         jurusan.setText("");
@@ -486,7 +478,7 @@ public class DataAnggota extends javax.swing.JFrame {
 
             NIM.setText(nimToUpdate);
             nama.setText(namaToUpdate);
-            jenisKelamin.setText(jenisKelaminToUpdate);
+            jenisKelamin.setSelectedItem(jenisKelaminToUpdate);
             nomorHp.setText(nomorHpToUpdate);
             email.setText(emailToUpdate);
             jurusan.setText(jurusanToUpdate);
@@ -562,7 +554,7 @@ public class DataAnggota extends javax.swing.JFrame {
 
             preparedStatement.setString(1, NIM.getText());
             preparedStatement.setString(2, nama.getText());
-            preparedStatement.setString(3, jenisKelamin.getText());
+            preparedStatement.setString(3, (String) jenisKelamin.getSelectedItem());
             preparedStatement.setString(4, nomorHp.getText());
             preparedStatement.setString(5, email.getText());
             preparedStatement.setString(6, jurusan.getText());
@@ -576,7 +568,7 @@ public class DataAnggota extends javax.swing.JFrame {
                  
                 NIM.setText("");
                 nama.setText("");
-                jenisKelamin.setText("");
+                
                 nomorHp.setText("");
                 email.setText("");
                 jurusan.setText("");
@@ -611,7 +603,8 @@ public class DataAnggota extends javax.swing.JFrame {
             if (resultSet.next()) {
                 NIM.setText(resultSet.getString("nim"));
                 nama.setText(resultSet.getString("nama"));
-                jenisKelamin.setText(resultSet.getString("jenis_kelamin"));
+                String jenisKelaminValue = resultSet.getString("jenis_kelamin");
+                jenisKelamin.setSelectedItem(jenisKelaminValue);
                 nomorHp.setText(resultSet.getString("no_hp"));
                 email.setText(resultSet.getString("email"));
                 jurusan.setText(resultSet.getString("jurusan"));
@@ -711,7 +704,7 @@ public class DataAnggota extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jenisKelamin;
+    private javax.swing.JComboBox<String> jenisKelamin;
     private javax.swing.JTextField jurusan;
     private javax.swing.JButton keluar;
     private javax.swing.JTextField nama;

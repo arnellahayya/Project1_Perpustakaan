@@ -83,13 +83,13 @@
                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="NIM" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                      <Component id="nama" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                      <Component id="jenisKelamin" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                      <Component id="nomorHp" min="-2" pref="168" max="-2" attributes="0"/>
-                      <Component id="email" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                      <Component id="jurusan" min="-2" pref="168" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="NIM" alignment="0" pref="168" max="32767" attributes="0"/>
+                      <Component id="nama" alignment="0" pref="168" max="32767" attributes="0"/>
+                      <Component id="nomorHp" pref="168" max="32767" attributes="0"/>
+                      <Component id="email" alignment="0" pref="168" max="32767" attributes="0"/>
+                      <Component id="jurusan" pref="168" max="32767" attributes="0"/>
+                      <Component id="jenisKelamin" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -142,10 +142,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="jenisKelamin" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="batal" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="perbarui" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tampil" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jenisKelamin" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -264,11 +264,6 @@
         <Component class="javax.swing.JTextField" name="email">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jenisKelamin">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jenisKelaminActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="cariText">
@@ -506,6 +501,19 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cariActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jenisKelamin">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="Laki-laki"/>
+                <StringItem index="1" value="Perempuan"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
