@@ -31,6 +31,7 @@ public class TransaksiBuku extends javax.swing.JFrame {
      */
     public TransaksiBuku() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**

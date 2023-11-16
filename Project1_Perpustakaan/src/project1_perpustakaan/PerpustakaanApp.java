@@ -22,6 +22,8 @@ public class PerpustakaanApp extends javax.swing.JFrame {
      */
     public PerpustakaanApp() {
         initComponents();
+        setLocationRelativeTo(this);
+        
         
         
     }

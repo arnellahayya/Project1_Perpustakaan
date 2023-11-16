@@ -24,6 +24,7 @@ public class DataAnggota extends javax.swing.JFrame {
      */
     public DataAnggota() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**

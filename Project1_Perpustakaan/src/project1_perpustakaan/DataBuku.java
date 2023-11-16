@@ -25,6 +25,7 @@ public class DataBuku extends javax.swing.JFrame {
      */
     public DataBuku() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**
